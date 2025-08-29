@@ -1,376 +1,189 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="id">
-      <head>
-          <meta charset="UTF-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <title>Yayasan Sabilulhuda</title>
-          <link href="/dist/output.css" rel="stylesheet">
-        <style>
-          .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-          }
-            html {
-    scroll-behavior: smooth;
-          }
-        </style>
-      </head>
-    <body class="bg-gray-50 text-gray-800">
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan Keuangan Harian</title>
+  <link href="./dist/output.css" rel="stylesheet">
 
-      <!--------------------------- NAVBAR -------------------------->
-      <header id="home" class="sticky top-0 z-50 bg-slate-500 shadow">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-          <!-- Logo + Judul -->
-          <div class="flex items-center space-x-1">
-            <img src="images/logo_yayasan.png" alt="Logo" class="h-14 w-auto">
-            <h1 class="text-2xl font-bold italic text-yellow-400">
-              <span class="text-white">Yayasan</span>SABDA
-            </h1>
-          </div>
+  <!-- ==================== Supabase & Chart.js ==================== -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/@supabase/supabase-js"></script>
 
-          <!-- Mobile Menu - toggle with <details> -->
-          <details id="menu-btn" class="relative list-none md:hidden">
-            <summary class="cursor-pointer text-white appearance-none focus:outline-none">
-              <!-- Hamburger icon -->
-              <svg class="w-8 h-6" fill="none" stroke="currentColor" stroke-width="2"
-                viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </summary>
+  <style>
+  @media print {
+    /* Default: semua sembunyi */
+    body * {
+      display: none !important;
+    }
 
-            <div id="dropdown" class="absolute right-0 mt-4 w-52 bg-slate-600 text-white rounded-lg shadow-lg p-4 z-50 space-y-4">
-              <a href="#home" class="block hover:font-bold hover:text-yellow-300">Home</a>
-              <a href="#about" class="block hover:font-bold hover:text-yellow-300">About</a>
-              <a href="#program" class="block hover:font-bold hover:text-yellow-300">Program</a>
-              <a href="#contact" class="block hover:font-bold hover:text-yellow-300">Contact</a>
-            </div>
-          </details>
+    /* Hanya tampilkan bagian laporan */
+    #tabel, #tabel * {
+      display: block !important;
+    }
 
-          <!-- Menu Navigasi (Desktop) -->
-          <nav class="hidden md:flex md:items-center">
-            <ul class="flex space-x-6 bg-slate-600 z-50 rounded-md p-2 shadow-lg">
-              <li>
-                <a href="#home" class="relative group text-white pb-1 transition-colors duration-300">
-                  <span class="group-hover:font-bold transition duration-300">Home</span>
-                  <span class="absolute bottom-0 left-0 w-full h-[2px] bg-yellow-400 transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100"></span>
-                </a>
-              </li>
-              <li>
-                <a href="#about" class="relative group text-white pb-1 transition-colors duration-300">
-                  <span class="group-hover:font-bold transition duration-300">About</span>
-                  <span class="absolute bottom-0 left-0 w-full h-[2px] bg-yellow-400 transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100"></span>
-                </a>
-              </li>
-              <li>
-                <a href="#program" class="relative group text-white pb-1 transition-colors duration-300">
-                  <span class="group-hover:font-bold transition duration-300">Program</span>
-                  <span class="absolute bottom-0 left-0 w-full h-[2px] bg-yellow-400 transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100"></span>
-                </a>
-              </li>
-              <li>
-                <a href="#contact" class="relative group text-white pb-1 transition-colors duration-300">
-                  <span class="group-hover:font-bold transition duration-300">Contact</span>
-                  <span class="absolute bottom-0 left-0 w-full h-[2px] bg-yellow-400 transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100"></span>
-                </a>
-              </li>
-            </ul>
-          </nav>
+    /* Sembunyikan kolom aksi di tabel cetak */
+    #tabel th:last-child,
+    #tabel td:last-child {
+      display: none !important;
+    }
+
+    /* Rapikan style print */
+    #tabel {
+      width: 100%;
+      margin: 0 auto;
+      font-family: Arial, sans-serif;
+    }
+
+    #tabel h1 {
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    #tabel table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    #tabel th, #tabel td {
+      border: 1px solid #444;
+      padding: 6px;
+      font-size: 13px;
+      text-align: left;
+    }
+  }
+  </style>
+
+</head>
+<body class="bg-gradient-to-tr from-sky-100 to-sky-200 font-sans min-h-screen">
+
+  <!-- Judul -->
+  <h1 class="text-4xl font-extrabold mb-6 mt-6 text-center text-gray-800 drop-shadow">
+    Laporan Keuangan Harian
+  </h1>
+
+  <!-- Tanggal -->
+  <div id="tanggalNow" class="bg-gradient-to-l from-orange-200 to-orange-400 text-center text-lg md:text-xl 
+                              drop-shadow-lg font-semibold text-slate-800 mb-6 rounded-xl p-3">
+    <p>Tanggal</p>
+    <p id="tanggal"></p>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="dashboard" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8">
+    
+    <!-- Saldo -->
+    <div class="bg-gradient-to-r from-green-300 to-green-600 p-5 rounded-xl shadow-lg 
+                hover:scale-105 transition-transform duration-200">
+      <div class="flex justify-between items-center">
+        <div>
+          <p class="text-gray-700 font-medium">Saldo</p>
+          <p id="saldo" class="text-2xl font-bold mt-2">Rp0</p>
         </div>
-      </header>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round"
+             class="w-9 h-9 text-slate-800 flex-shrink-0">
+          <path d="M3 7.5A2.5 2.5 0 0 1 5.5 5H16a2 2 0 0 1 2 2v1.5M3 9.5h15a2 2 0 0 1 2 2v4A2.5 2.5 0 0 1 17.5 18h-12A2.5 2.5 0 0 1 3 15.5v-6Z"/>
+          <path d="M17 12.5h2.5M7 7.5h6"/>
+        </svg>
+      </div>
+    </div>
 
-      <!------------------------ TENTANG KAMI ------------------------>
-      <section id="about" class="bg-gray-100 py-16 mt-4 mb-8 px-4 md:px-8">
-        <!-- Judul & Deskripsi -->
-        <div class="container  mt-45 mx-auto px-4 text-center">
-          <h3 class="text-3xl font-semibold mx-auto text-center py-4 text-slate-700mb-2">Tentang Kami</h3>
-            <div class="bg-white shadow-md rounded-xl p-6 text-center hover:shadow-lg transition">
-            Yayasan Sabilul Huda (SABDA) adalah lembaga pendidikan dan sosial yang bergerak dalam pengembangan karakter, literasi, dan nilai-nilai keislaman. Kami berdiri untuk menghadirkan solusi pendidikan yang ramah, berkualitas, dan penuh makna bagi generasi masa depan.
-          </p>
+    <!-- Pemasukan -->
+    <div class="bg-gradient-to-r from-blue-300 to-blue-100 p-5 rounded-xl shadow-lg 
+                hover:scale-105 transition-transform duration-200">
+      <div class="flex justify-between items-center">
+        <div>
+          <p class="text-gray-700 font-medium">Pemasukan</p>
+          <p id="totalPemasukan" class="text-2xl font-bold mt-2">Rp0</p>
         </div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round"
+             class="w-9 h-9 text-slate-800 flex-shrink-0">
+          <ellipse cx="9" cy="6.5" rx="6" ry="2.5"/>
+          <path d="M3 6.5V10c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5V6.5M6 13.5V17c0 1.4 2.7 2.5 6 2.5 
+                   2.2 0 4.1-.5 5.2-1.2"/>
+          <ellipse cx="18" cy="13" rx="3" ry="1.2"/>
+          <path d="M15 13v3c0 .7 1.3 1.2 3 1.2s3-.5 3-1.2v-3"/>
+        </svg>
+      </div>
+    </div>
 
-        <!-- Card Box Visi & Misi -->
-        <div class="max-w-6xl mx-auto  grid-cols-1 md:grid-cols-5 flex-wrap gap-3 mt-8">
-
-          <!-- Card Visi -->
-          <div class="bg-white shadow-md rounded-xl p-6 text-left hover:shadow-lg transition">
-            <h3 class="text-2xl font-semibold text-gray-800 mb-4">Visi</h3>
-            <p class="text-gray-700 text-base leading-relaxed">
-              Menjadi lembaga yang melahirkan generasi berkarakter, cinta ilmu, dan siap menghadapi masa depan dengan nilai-nilai Islam yang kuat.
-            </p>
-          </div>
-
-          <!-- Card Misi -->
-          <div class="bg-white shadow-md rounded-xl p-6 text-left hover:shadow-lg transition">
-            <h3 class="text-2xl font-semibold text-gray-800 mb-4">Misi</h3>
-            <ul class="list-disc pl-5 text-gray-700 space-y-2 text-base leading-relaxed">
-              <li>Menyelenggarakan pendidikan yang berbasis adab dan ilmu syar’i.</li>
-              <li>Mendampingi tumbuh kembang anak dengan pendekatan lembut dan visioner.</li>
-              <li>Memberdayakan masyarakat melalui program sosial, dakwah, dan literasi.</li>
-            </ul>
-          </div>
+    <!-- Pengeluaran -->
+    <div class="bg-gradient-to-r from-red-300 to-red-100 p-5 rounded-xl shadow-lg 
+                hover:scale-105 transition-transform duration-200">
+      <div class="flex justify-between items-center">
+        <div>
+          <p class="text-gray-700 font-medium">Pengeluaran</p>
+          <p id="totalPengeluaran" class="text-2xl font-bold mt-2">Rp0</p>
         </div>
-      </section>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round"
+             class="w-9 h-9 text-slate-800 flex-shrink-0">
+          <path d="M12 4v16m0 0l-6-6m6 6l6-6"/>
+        </svg>
+      </div>
+    </div>
+  </div>
 
-      <!------------------------- PROGRAM KAMI ------------------------>
-      <section id="program" class="py-12 bg-white">
-        <div class="container mx-auto px-4">
-          <h3 class="text-3xl font-semibold text-center text-slate-600 mb-8">Program Kami</h3>
-          <div class="grid md:grid-cols-3 gap-6">
-            
-            <!-- Program Tahfidz -->
-            <div class="bg-gray-100 p-6 rounded-xl shadow hover:shadow-lg transition">
-              <h4 class="text-lg font-bold mb-2">Program Tahfidz</h4>
-              <p class="text-sm">Membina generasi Qur'ani melalui hafalan Al-Qur’an.</p>
-              
-              <a href="/box-satu" class="block p-4 rounded-xl shadow hover:shadow-lg transition">
-                <img src="images/program-pendidikan1.jpg" class="w-full h-full object-contain rounded-lg mb-2"/>
-                <h2 class="text-lg font-semibold text-center"></h2>
-              </a>
-            </div>
-            
-            <!-- Kajian Islam Rutin -->
-            <div class="bg-gray-100 p-6 rounded-xl shadow hover:shadow-lg transition">
-              <h4 class="text-lg font-bold mb-2">Kajian Islam Rutin</h4>
-              <p class="text-sm">Kajian online dan offline bersama ustadz pilihan.</p>
-              <a href="/box-satu" class="block p-4 rounded-xl shadow hover:shadow-lg transition">
-                <img src="images/program-kajian.jpg" class="w-full h-full object-contain rounded-lg mb-2"/>
-                <h2 class="text-lg font-semibold text-center"></h2>
-              </a>
-            </div>
+  <!-- Form Input -->
+  <div class="bg-white p-6 rounded-xl shadow-lg mb-6">
+    <form id="formTransaksi" class="flex flex-col sm:flex-row gap-3 items-center">
+      <input type="text" id="deskripsi" placeholder="Deskripsi" 
+             class="border p-3 rounded-lg flex-1 focus:ring-2 focus:ring-blue-400">
+      <input type="number" id="nominal" placeholder="Nominal" 
+             class="border p-3 rounded-lg w-full sm:w-28 focus:ring-2 focus:ring-blue-400">
+      <select id="tipe" 
+              class="border p-3 rounded-lg w-full sm:w-36 focus:ring-2 focus:ring-blue-400">
+        <option value="pemasukan">Pemasukan</option>
+        <option value="pengeluaran">Pengeluaran</option>
+      </select>
+      <button type="submit" 
+              class="bg-blue-500 text-white p-3 rounded-lg w-full sm:w-32 
+                     hover:bg-blue-600 active:scale-95 transition-all flex items-center justify-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" 
+             viewBox="0 0 24 24" stroke="currentColor" 
+             class="w-5 h-5 flex-shrink-0">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                d="M12 4v16m8-8H4" />
+        </svg>
+        Tambahkan
+      </button>
+    </form>
+  </div>
 
-            <!-- Santunan & Sosial -->
-            <div class="bg-gray-100 p-6 rounded-xl shadow hover:shadow-lg transition">
-              <h4 class="text-lg font-bold mb-2">Santunan & Sosial</h4>
-              <p class="text-sm">Program bantuan dan dukungan masyarakat dhuafa.</p>
-              <a href="/box-satu" class="block p-4 rounded-xl shadow hover:shadow-lg transition">
-                <img src="images/program-dhuafa.jpg" class="w-full h-full object-contain rounded-lg mb-2"/>
-                <h2 class="text-lg font-semibold text-center"></h2>
-              </a>
-            </div>
+  <!-- Chart -->
+  <div class="bg-white p-6 rounded-xl shadow-lg mb-6">
+    <canvas id="chartKeuangan"></canvas>
+  </div>
 
-            <!-- Wakaf -->
-            <div class="bg-gray-100 p-6 rounded-xl shadow hover:shadow-lg transition">
-              <h4 class="text-lg font-bold mb-2">Wakaf/Donasi</h4>
-              <p class="text-sm">Pembebasan tanah, pembangunan masjid, dan fasilitas umum lainnya.</p>
-              <!-- Wakaf_01 -->
-              <a href="/box-satu" class="block p-4 rounded-xl shadow hover:shadow-lg transition">
-                <img src="images/pembebasan-lahan1.jpeg" class="w-full h-full object-contain rounded-lg mb-2"/>
-                <h2 class="text-lg font-semibold text-center">Renovasi Musholah</h2>
-              </a>
-              <!-- Wakaf_02 -->
-              <a href="/box-satu" class="block p-4 rounded-xl shadow hover:shadow-lg transition">
-                <img src="images/pembebasan-lahan2.jpeg" class="w-full h-full object-contain rounded-lg mb-2"/>
-                <h2 class="text-lg font-semibold text-center">Wakaf Pembebasan Tanah</h2>
-              </a>
-            </div>
+  <!-- Tombol Cetak -->
+  <button type="button" onclick="cetakLaporan()" 
+    class="bg-green-500 text-white px-4 py-2 rounded-lg mb-6 hover:bg-green-600 active:scale-95 transition-all">
+    Cetak Laporan
+  </button>
 
-            <!-- Umroh & Haji -->
-            <div class="bg-gray-100 p-6 rounded-xl shadow hover:shadow-lg transition">
-              <h4 class="text-lg font-bold mb-2">Layanan Umroh & Haji</h4>
-              <p class="text-sm">Melayani perjalanan ibadah umroh dan haji yang amanah dan terpercaya.</p>
-                          <a href="/box-satu" class="block p-4 rounded-xl shadow hover:shadow-lg transition">
-                <img src="images/program-haji.jpg" class="w-full h-full object-contain rounded-lg mb-2"/>
-                <h2 class="text-lg font-semibold text-center"></h2>
-              </a>
-            </div>
+  <!-- Tabel -->
+  <div id="tabel" class="bg-white p-6 rounded-xl shadow-lg overflow-x-auto">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="px-4 py-2 text-left text-gray-600 font-medium">Deskripsi</th>
+          <th class="px-4 py-2 text-left text-gray-600 font-medium">Nominal</th>
+          <th class="px-4 py-2 text-left text-gray-600 font-medium">Tipe</th>
+          <th class="px-4 py-2 text-left text-gray-600 font-medium">Timestamp</th>
+          <th class="px-4 py-2 text-left text-gray-600 font-medium">Aksi</th>
 
-            <!-- Servis AC -->
-            <div class="bg-gray-100 p-6 rounded-xl shadow hover:shadow-lg transition">
-              <h4 class="text-lg font-bold mb-2">Servis AC</h4>
-              <p class="text-sm">Perawatan dan perbaikan AC rumah dan kantor secara profesional.</p>
-              <a href="/box-satu" class="block p-4 rounded-xl shadow hover:shadow-lg transition">
-                <img src="images/program-ac.jpg" class="w-full h-full object-contain rounded-lg mb-2"/>
-                <h2 class="text-lg font-semibold text-center"></h2>
-              </a>
-            </div>
+        </tr>
+      </thead>
+      <tbody id="tabelTransaksi" class="divide-y divide-gray-100"></tbody>
+    </table>
+  </div>
 
-            <!-- Sumur Bor & Tanah -->
-            <div class="bg-gray-100 p-6 rounded-xl shadow hover:shadow-lg transition">
-              <h4 class="text-lg font-bold mb-2">Sumur Bor & Tanah</h4>
-              <p class="text-sm">Pembuatan sumur bor dan penyediaan lahan air untuk masyarakat.</p>
-              <a href="/box-satu" class="block p-4 rounded-xl shadow hover:shadow-lg transition">
-                <img src="images/program-sumur.jpg" class="w-full h-full object-contain rounded-lg mb-2"/>
-                <h2 class="text-lg font-semibold text-center"></h2>
-              </a>
-            </div>
-
-            <!-- Beasiswa Pendidikan -->
-            <div class="bg-gray-100 p-6 rounded-xl flitems-center justify-center shadow hover:shadow-lg transition">
-              <h3 class="text-xl font-semibold text-slate-700 mb-2">Beasiswa Pendidikan</h3>
-              <p class="text-gray-600">Dukungan finansial bagi siswa kurang mampu untuk terus mengenyam pendidikan berkualitas.</p>
-              <a href="/box-satu" class="block p-4 rounded-xl shadow hover:shadow-lg transition">
-                <img src="images/beasiswa.jpg" class="w-full h-full object-contain rounded-lg mb-2"/>
-                <h2 class="text-lg font-semibold text-center"></h2>
-              </a>
-                <!-- Info Beasiswa -->
-                <div class="border rounded-lg p-4 bg-slate-100  max-w-md">
-                  <div class="flex items-start space-x-4">
-                    <img src="images/logo_yayasan.png" alt="Logo"
-                      class="w-12 h-12 object-contain rounded" />
-                    <div>
-                      <h3 class="text-md font-semibold text-gray-800">Beasiswa S1 di Universitas Madinah</h3>
-                      <p class="text-sm text-gray-600">Yuk buruan daftarin anaknya atau sodaranya yang lulusan SMA / Sederajat.</p>
-                      <a href="http://yayasansabilulhuda.com/2018/10/04/beasiswa-s1-di-universitas-madinah/" target="_blank"
-                        class="text-blue-600 text-sm hover:underline mt-2 inline-block">
-                        Klik di sini
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="border rounded-lg p-4 bg-slate-100 max-w-md">
-                  <div class="flex items-start space-x-4">
-                    <img src="images/logo_yayasan.png" alt="Logo"
-                      class="w-12 h-12 object-contain rounded" />
-                    <div>
-                      <h3 class="text-md font-semibold text-gray-800">Beasiswa S1 di Universitas Ummul Quro</h3>
-                      <p class="text-sm text-gray-600">Yuk buruan daftarin anaknya atau sodaranya yang lulusan SMA / Sederajat.</p>
-                      <a href="http://yayasansabilulhuda.com/2018/10/04/beasiswa-di-ummulquro-makkah/" target="_blank"
-                        class="text-blue-600 text-sm hover:underline mt-2 inline-block">
-                        Klik di sini
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="border rounded-lg p-4 bg-slate-100 max-w-md">
-                  <div class="flex items-start space-x-4">
-                    <img src="images/logo_yayasan.png" alt="Logo"
-                      class="w-12 h-12 object-contain rounded" />
-                    <div>
-                      <h3 class="text-md font-semibold text-gray-800">Raja Salman membuka Masjid Quba 24 jam penuh</h3>
-                      <p class="text-sm text-gray-600">Memberi kemudahan kepada para penuntut ilmu dan peziarah di Madinah.</p>
-                      <a href="http://yayasansabilulhuda.com/2018/09/27/raja-salman-membuka-masjid-quba-24-jam/" target="_blank"
-                        class="text-blue-600 text-sm hover:underline mt-2 inline-block">
-                        Klik di sini
-                      </a>
-                    </div>
-                  </div>
-                </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-------------------------- ALAMAT KAMI ------------------------>
-      <section id="about" class="bg-gray-50 py-14 px-4">
-        <div class="container mx-auto px-4 mb-8">
-          <h2 class="text-3xl font-bold text-center py-4 text-slate-600 mb-10">Alamat Kami</h2>
-
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-            <!-- Card Cabang 1 -->
-            <div class="bg-white shadow-md rounded-xl p-6 text-center hover:shadow-lg transition">
-              <h3 class="text-xl font-semibold text-blue-900 mb-2">Kantor Pusat</h3>
-              <p class="text-gray-700 mb-4">Jl. Segeran Lor Pulak Penanggul RT.05 RW. 03 Juntinyuat-Indramayu</p>
-              <a href="https://maps.app.goo.gl/oQeT9MzYTDH2uCGP6?g_st=aw" target="_blank" class="text-blue-600 font-medium hover:underline">📍 Lihat di Google Maps</a>
-            </div>
-
-            <!-- Card Cabang 2 -->
-            <div class="bg-white shadow-md rounded-xl p-6 text-center hover:shadow-lg transition">
-              <h3 class="text-xl font-semibold text-blue-900 mb-2">Cabang Jakarta (1)</h3>
-              <p class="text-gray-700 mb-4">Jl. Pengadegan Raya No. 20 Pancoran Timur-Jakarta Selatan</p>
-              <a href="https://maps.app.goo.gl/HM2LTWo7sQq84ApM8?g_st=aw" target="_blank" class="text-blue-600 font-medium hover:underline">📍 Lihat di Google Maps</a>
-            </div>
-
-            <!-- Card Cabang 3 -->
-            <div class="bg-white shadow-md rounded-xl p-6 text-center hover:shadow-lg transition">
-              <h3 class="text-xl font-semibold text-blue-900 mb-2">Cabang Jakarta (2)</h3>
-              <p class="text-gray-700 mb-4">Jl. Turi 1 No. 33 A RT. 12 RW. 03 Lenteng Agung-Jakarta Selatan</p>
-              <a href="https://maps.app.goo.gl/1CQKm8f5MuLB2Bky9?g_st=aw" target="_blank" class="text-blue-600 font-medium hover:underline">📍 Lihat di Google Maps</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!------------------------ KONTAK & EMAIL KAMI ------------------->
-      <section id="contact" class="bg-white py-14 px-4">
-        <div class="container mx-auto px-4 space-y-6">
-          <h2 class="text-3xl font-bold text-center py-4 mb-3 text-slate-600">Informasi Kontak</h2>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-
-            <!-- Kontak Umum -->
-            <div class="bg-gray-100 shadow-md rounded-xl p-6 text-center hover:shadow-lg transition">
-              <h3 class="text-xl font-semibold text-blue-900 mb-2">Telepon / WhatsApp</h3>
-              <a  href="https://wa.me/6281234567890" target="_blank" class="text-slate-600 hover:underline hover:font-bold">📞 0877-1772-3865</a>
-            </div>
-
-            <!-- Email -->
-            <div class="bg-gray-100 shadow-md rounded-xl p-6 text-center hover:shadow-lg transition">
-              <h3 class="text-xl font-semibold text-blue-900 mb-2">Email</h3>
-              <a href="mailto:sabilulhuda02@gmail.com" target="_blank" class="text-slate-600 hover:underline hover:font-bold">📧 sabilulhuda02@gmail.com</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!----------------------- VIDEO KAJIAN ----------------------->
-      <section class="relative h-[300px] md:h-[500px] overflow-hidden">
-        <div class="absolute inset-0 w-full h-full">
-          <div class="slider-youtube w-full h-full relative ">
-            <!-- Video 1 -->
-            <iframe
-              class="absolute top-0 left-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000 slide"
-              src="https://www.youtube.com/embed/OHha4lncvmE?autoplay=1&mute=1&loop=1&playlist=OHha4lncvmE&controls=0&showinfo=0"
-              frameborder="0"
-              allow="autoplay; encrypted-media"
-              allowfullscreen
-            ></iframe>
-
-            <!-- Video 2 -->
-            <iframe
-              class="absolute top-0 left-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 slide"
-              src="https://www.youtube.com/embed/Pz_geD1T4VA?autoplay=1&mute=1&loop=1&playlist=Pz_geD1T4VA&controls=0&showinfo=0"
-              frameborder="0"
-              allow="autoplay; encrypted-media"
-              allowfullscreen
-            ></iframe>
-
-            <!-- Video 3 -->
-            <iframe
-              class="absolute top-0 left-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 slide"
-              src="https://www.youtube.com/embed/3XzBdd62o_4?autoplay=1&mute=1&loop=1&playlist=3XzBdd62o_4&controls=0&showinfo=0"
-              frameborder="0"
-              allow="autoplay; encrypted-media"
-              allowfullscreen
-            ></iframe>
-          </div>
-        </div>
-
-        <!-- Video Kajian-kajian -->
-        <div class="relative z-50 bg-black/60 text-white px-6 py-3 rounded text-center">
-          <h2 class="relative z-50 text-3xl md:text-5xl font-bold text-white text-center mb-1 bg-black/0 px-4 py-2 rounded">
-            Video Kajian-kajian
-          </h2>
-        </div>
-      </section>
-
-      <!---------------------------------- FOOTER ----------------------------->
-      <footer class="bg-slate-500 text-white py-6 mt-10">
-        <div class="container mx-auto px-4 text-center">
-          <p>&copy; 2025 <span class="text-yellow-400 font-bold">Yayasan Sabilul Huda</span> All rights reserved.</p>
-        </div>
-
-        <div class="flex space-x-4 pt-2 mt-1 items-center justify-center text-base font-medium">
-          <!-- YouTube -->
-          <a href="http://www.youtube.com/@yayasansabilulhudasabda4717" target="_blank" class="flex items-center hover:text-red-400 transition">
-            <svg class="w-6 h-6 mr-2 text-white" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M19.6 3H4.4C3.1 3 2 4.1 2 5.4v13.2C2 19.9 3.1 21 4.4 21h15.2c1.3 0 2.4-1.1 2.4-2.4V5.4C22 4.1 20.9 3 19.6 3zM10 16.5v-9l6 4.5-6 4.5z"/>
-            </svg>
-          </a>
-          <!-- Instagram -->
-          <a href="https://instagram.com/yayasansabilul" target="_blank" class="flex items-center hover:text-pink-400 transition">
-            <svg class="w-6 h-6 mr-2 text-whit" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.5-2a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/>
-            </svg>
-          </a>
-        </div>
-      </footer>
-      <!------------------ JS ------------------->
-      <script src="script.js"></script>
-
-    </body>
-</html>                                                                                     
+<script src="app.js"></script>
+</body>
+</html>
