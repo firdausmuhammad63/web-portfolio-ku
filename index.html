@@ -1,189 +1,893 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Laporan Keuangan Harian</title>
-  <link href="./dist/output.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Title & SEO -->
+  <title>Firdaus Muhammad - Web Developer Portfolio</title>
+  <meta name="description" content="Portfolio Firdaus Muhammad bin Sulaiman - Web Developer profesional dengan pengalaman dalam pembuatan website modern dan responsif." />
+  <meta name="keywords" content="Firdaus Muhammad, Web Developer, Portfolio, Tailwind CSS, Responsive Website, UI/UX, Freelancer" />
+  <meta name="author" content="Firdaus Muhammad" />
 
-  <!-- ==================== Supabase & Chart.js ==================== -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://unpkg.com/@supabase/supabase-js"></script>
+  <!-- Favicon -->
+  <link rel="icon" href="assets/F-1.png" type="image/png" />
 
-  <style>
-  @media print {
-    /* Default: semua sembunyi */
-    body * {
-      display: none !important;
-    }
+  <!-- Open Graph / Social Preview -->
+  <meta property="og:title" content="Firdaus Muhammad - Web Developer Portfolio" />
+  <meta property="og:description" content="Portfolio Firdaus Muhammad bin Sulaiman - Web Developer profesional dengan pengalaman dalam pembuatan website modern dan responsif." />
+  <meta property="og:image" content="https://example.com/F-1.png" />
+  <meta property="og:url" content="https://example.com" />
+  <meta property="og:type" content="website" />
 
-    /* Hanya tampilkan bagian laporan */
-    #tabel, #tabel * {
-      display: block !important;
-    }
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Firdaus Muhammad - Web Developer Portfolio" />
+  <meta name="twitter:description" content="Portfolio Firdaus Muhammad bin Sulaiman - Web Developer profesional dengan pengalaman dalam pembuatan website modern dan responsif." />
+  <meta name="twitter:image" content="https://example.com/F-1.png" />
 
-    /* Sembunyikan kolom aksi di tabel cetak */
-    #tabel th:last-child,
-    #tabel td:last-child {
-      display: none !important;
-    }
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-    /* Rapikan style print */
-    #tabel {
-      width: 100%;
-      margin: 0 auto;
-      font-family: Arial, sans-serif;
-    }
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-    #tabel h1 {
-      margin-bottom: 15px;
-      text-align: center;
-    }
-
-    #tabel table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 10px;
-    }
-
-    #tabel th, #tabel td {
-      border: 1px solid #444;
-      padding: 6px;
-      font-size: 13px;
-      text-align: left;
-    }
+  <!-- Tailwind CSS -->
+  <link rel="stylesheet" href="dist/output.css" />
+<style>
+:root {
+  --primary: #2563eb;
+  --secondary: #1e40af;
+  --accent: #f59e0b;
+  --dark: #0f172a;
+  --light: #f8fafc;
+}
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
   }
-  </style>
+  50% {
+    background-position: 100% 50%;
+  }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
 
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Animations classes */
+.animate-fadeInUp { animation: fadeInUp 0.8s ease-out forwards; }
+.animate-fadeInLeft { animation: fadeInLeft 0.8s ease-out forwards; opacity: 1; }
+.animate-fadeInRight { animation: fadeInRight 0.8s ease-out forwards; opacity: 1; }
+.animate-float { animation: float 3s ease-in-out infinite; }
+.gradient-bg {
+  background: linear-gradient(-45deg, #6b4226, #c49a6c, #0f172a, #1e3a8a);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+.glass {
+  background: rgba(239, 181, 6, 0.572);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(190, 117, 16, 0.2);
+}
+html { scroll-behavior: smooth; }
+.fade-in { opacity: 1; transform: translateY(0); transition: all 0.8s ease-out; }
+.fade-in.animate { opacity: 1; transform: translateY(0); }
+.hover-lift { transition: all 0.3s ease; }
+.hover-lift:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); }
+.hover-scale { transition: all 0.3s ease; }
+.hover-scale:hover { transform: scale(1.05); }
+.nav-link { position: relative; transition: all 0.3s ease; }
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #6b4226;
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after,
+.nav-link.active::after { width: 100%; }
+.mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
+.mobile-menu.active { transform: translateX(0); }
+.skill-bar { position: relative; overflow: hidden; }
+.skill-progress {
+  height: 100%;
+  background: linear-gradient(90deg, #c49a6c,  #6b4226);
+  transition: width 1s ease-out;
+}
+.filter-btn { transition: all 0.3s ease; }
+.filter-btn.active { background: #c49a6c; color: white; transform: scale(1.05); }
+.form-input { transition: all 0.3s ease; }
+.form-input:focus { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15); }
+.loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+}
+section { opacity: 1; visibility: visible; }
+@media (max-width: 768px) {
+  .hero-title { font-size: 2.5rem; }
+}
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #c49a6c, #6b4226);border-radius: 4px;}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  emailjs.init("p7xNVreuIYAZ4wiJf"); // Public Key
+</script>
 </head>
-<body class="bg-gradient-to-tr from-sky-100 to-sky-200 font-sans min-h-screen">
+<body class="gradient-bg text-gray-800 font-sans">
 
-  <!-- Judul -->
-  <h1 class="text-4xl font-extrabold mb-6 mt-6 text-center text-gray-800 drop-shadow">
-    Laporan Keuangan Harian
-  </h1>
+<!-- Navigation -->
+<nav class="fixed top-0 w-full bg-amber-100 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
+  <div class="container mx-auto px-4">
+    <div class="flex justify-between items-center py-4">
+      <!-- Logo -->
+      <div class="font-display font-bold text-2xl text-yellow-800">Firdaus<span class="text-slate-600">.WebDev</span></div>
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex space-x-8">
+        <a href="#home" class="nav-link text-gray-700 hover:text-yellow-800">Home</a>
+        <a href="#about" class="nav-link text-gray-700 hover:text-yellow-800">About</a>
+        <a href="#services" class="nav-link text-gray-700 hover:text-yellow-800">Services</a>
+        <a href="#portfolio" class="nav-link text-gray-700 hover:text-yellow-800">Portfolio</a>
+        <a href="#pricing" class="nav-link text-gray-700 hover:text-yellow-800">Pricing</a>
+        <a href="#contact" class="nav-link text-gray-700 hover:text-yellow-800">Contact</a>
+      </div>
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden text-slate-700 hover:text-yellow-800" id="mobile-menu-btn">
+        <i class="fas fa-bars text-xl"></i>
+      </button>
+    </div>
+  </div>
+  <!-- Mobile Menu -->
+  <div class="mobile-menu fixed top-0 right-0 w-64 h-full bg-amber-100 shadow-lg md:hidden" id="mobile-menu">
+    <div class="p-6 relative">
+      <button class="absolute top-4 right-4 text-gray-700 hover:text-yellow-800" id="close-menu">
+        <i class="fas fa-times text-xl"></i>
+      </button>
+      <div class="mt-8 space-y-4">
+        <a href="#home" class="block text-gray-700 hover:text-yellow-800 hover:font-semibold py-2">Home</a>
+        <a href="#about" class="block text-gray-700 hover:text-yellow-800 hover:font-semibold py-2">About</a>
+        <a href="#services" class="block text-gray-700 hover:text-yellow-800 hover:font-semibold py-2">Services</a>
+        <a href="#portfolio" class="block text-gray-700 hover:text-yellow-800 hover:font-semibold py-2">Portfolio</a>
+        <a href="#pricing" class="block text-gray-700 hover:text-yellow-800 hover:font-semibold py-2">Pricing</a>
+        <a href="#contact" class="block text-gray-700 hover:text-yellow-800 hover:font-semibold py-2">Contact</a>
+      </div>
+    </div>
+  </div>
+</nav>
 
-  <!-- Tanggal -->
-  <div id="tanggalNow" class="bg-gradient-to-l from-orange-200 to-orange-400 text-center text-lg md:text-xl 
-                              drop-shadow-lg font-semibold text-slate-800 mb-6 rounded-xl p-3">
-    <p>Tanggal</p>
-    <p id="tanggal"></p>
+<!-- Hero Section -->
+<section id="home" class="min-h-screen flex items-center gradient-bg relative overflow-hidden">
+  <!-- Background Elements -->
+  <div class="absolute inset-0">
+    <div class="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full animate-float"></div>
+    <div class="absolute top-40 right-20 w-16 h-16 bg-white/10 rounded-full animate-float" style="animation-delay: 1s;"></div>
+    <div class="absolute bottom-20 left-20 w-24 h-24 bg-white/10 rounded-full animate-float" style="animation-delay: 2s;"></div>
   </div>
 
-  <!-- Dashboard -->
-  <div id="dashboard" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8">
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <!-- Text Content -->
+      <div class="text-white">
+        <div class="animate-fadeInLeft">
+          <p class="text-lg mb-4 opacity-90">Assalamu'alaikum, I'm</p>
+          <h1 class="hero-title font-display font-bold text-4xl md:text-6xl mb-4">
+            <span class="text-amber-100">Firdaus Muhammad</span>
+          </h1>
+          <div class="text-xl md:text-2xl mb-6 h-8">
+            <span class="typing-effect">Web Developer & UI/UX Designer</span>
+          </div>
+          <p class="text-lg opacity-90 mb-8 leading-relaxed">
+            Saya adalah seorang web developer profesional dengan pengalaman dalam menciptakan website modern, responsif, dan user-friendly. Mari wujudkan ide digital Anda!
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#portfolio" class="bg-amber-100 text-yellow-800 px-8 py-3 rounded-full font-semibold hover:bg-amber-100 transition-all duration-300 hover-scale text-center">
+              Lihat Portfolio
+            </a>
+            <a href="#contact" class="border-2 border-amber-200 text-white px-8 py-3 rounded-full font-semibold hover:bg-amber-100 hover:text-yellow-800 transition-all duration-300 text-center">
+              Hubungi Saya
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Profile Image -->
+      <div class="animate-fadeInRight">
+        <div class="relative">
+          <div class="w-60 h-60 mx-auto bg-white/10 rounded-full flex items-center justify-center animate-pulse-custom overflow-hidden">
+            <!-- Gambar PNG -->
+            <img src="assets/F.jpeg" alt="Profile" class="w-full h-full object-cover" />
+          </div>
+          <!-- Social Links -->
+          <div class="absolute mt-7 left-1/2 transform -translate-x-1/2 flex space-x-4">
+            <a href="#" class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-amber-800 transition-all duration-300 hover-scale">
+              <i class="fab fa-github"></i>
+            </a>
+
+            <a href="#" class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-amber-800 transition-all duration-300 hover-scale">
+              <i class="fab fa-linkedin"></i>
+            </a>
+
+            <a href="#" class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-amber-800 transition-all duration-300 hover-scale">
+              <i class="fab fa-instagram"></i>
+            </a>
+            
+            <a href="https://wa.me/6281234567890" target="_blank"
+              class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-amber-800 transition-all duration-300 hover-scale">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+    <i class="fas fa-chevron-down text-2xl"></i>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-20 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16 fade-in">
+      <h2 class="font-display text-4xl font-bold text-yellow-800 mb-4">Tentang Saya</h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Passionate web developer dengan dedikasi tinggi untuk menciptakan solusi digital yang inovatif
+      </p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <!-- About Text -->
+      <div class="fade-in">
+        <h3 class="font-display text-2xl font-semibold text-gray-800 mb-6">
+          Firdaus Muhammad bin Sulaiman
+        </h3>
+        <p class="text-gray-600 mb-6 leading-relaxed">
+          Saya adalah seorang web developer profesional dengan pengalaman lebih dari 1 tahun dalam industri teknologi. Spesialisasi saya meliputi pengembangan website modern, aplikasi web responsif, dan desain UI/UX yang user-friendly.
+        </p>
+        <p class="text-gray-600 mb-6 leading-relaxed">
+          Dengan keahlian dalam berbagai teknologi web terkini, saya berkomitmen untuk memberikan solusi digital terbaik yang sesuai dengan kebutuhan klien dan mengikuti standar industri.
+        </p>
+        <!-- Stats -->
+        <div class="grid grid-cols-3 gap-6 mt-8">
+          <div class="text-center">
+            <div class="text-3xl font-bold text-yellow-800 mb-2">3+</div>
+            <div class="text-gray-600">Projects</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-yellow-800 mb-2">1+</div>
+            <div class="text-gray-600">Happy Clients</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-yellow-800 mb-2">1+</div>
+            <div class="text-gray-600">Years Experience</div>
+          </div>
+        </div>
+      </div>
+      <!-- Skills -->
+      <div class="fade-in">
+        <h4 class="font-semibold text-xl text-gray-800 mb-6">Technical Skills</h4>
+        <div class="space-y-4">
+          <!-- HTML/CSS -->
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="text-gray-700">HTML/CSS/TailwindCSS</span>
+              <span class="text-gray-600">95%</span>
+            </div>
+            <div class="skill-bar w-full bg-gray-200 rounded-full h-3">
+              <div class="skill-progress rounded-full" style="width: 95%;"></div>
+            </div>
+          </div>
+          <!-- JavaScript -->
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="text-gray-700">JavaScript</span>
+              <span class="text-gray-600">90%</span>
+            </div>
+            <div class="skill-bar w-full bg-gray-200 rounded-full h-3">
+              <div class="skill-progress rounded-full" style="width: 90%;"></div>
+            </div>
+          </div>
+          <!-- React -->
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="text-gray-700">React.js</span>
+              <span class="text-gray-600">85%</span>
+            </div>
+            <div class="skill-bar w-full bg-gray-200 rounded-full h-3">
+              <div class="skill-progress rounded-full" style="width: 85%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="py-20 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16 fade-in">
+      <h2 class="font-display text-4xl font-bold text-yellow-800 mb-4">Layanan Saya</h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Solusi web development profesional untuk kebutuhan bisnis Anda
+      </p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Web Development -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg hover-lift fade-in">
+        <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-6">
+          <i class="fas fa-code text-2xl text-yellow-600"></i>
+        </div>
+        <h3 class="font-semibold text-xl text-yellow-800 mb-4">Web Development</h3>
+        <p class="text-gray-600 mb-6">
+          Pembuatan website custom dengan teknologi terkini, responsif, dan SEO-friendly.
+        </p>
+        <ul class="text-gray-600 space-y-2">
+          <li><i class="fas fa-check text-yellow-500 mr-2"></i>Responsive Design</li>
+          <li><i class="fas fa-check text-yellow-500 mr-2"></i>SEO Optimized</li>
+          <li><i class="fas fa-check text-yellow-500 mr-2"></i>Fast Loading</li>
+          <li><i class="fas fa-check text-yellow-500 mr-2"></i>Cross Browser</li>
+        </ul>
+      </div>
+      <!-- UI/UX Design -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg hover-lift fade-in">
+        <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-6">
+          <i class="fas fa-palette text-2xl text-yellow-600"></i>
+        </div>
+        <h3 class="font-semibold text-xl text-yellow-800 mb-4">UI/UX Design</h3>
+        <p class="text-gray-600 mb-6">
+          Desain interface yang menarik dan user experience yang optimal untuk website Anda.
+        </p>
+        <ul class="text-gray-600 space-y-2">
+          <li><i class="fas fa-check text-yellow-500 mr-2"></i>Modern Design</li>
+          <li><i class="fas fa-check text-yellow-500 mr-2"></i>User Friendly</li>
+          <li><i class="fas fa-check text-yellow-500 mr-2"></i>Mobile Friendly</li>
+          <li><i class="fas fa-check text-yellow-500 mr-2"></i>Performance Optimized</li>
+        </ul>
+      </div>
+      <!-- Maintenance -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg hover-lift fade-in">
+        <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-6">
+          <i class="fas fa-tools text-2xl text-yellow-600"></i>
+        </div>
+        <h3 class="font-semibold text-xl text-yellow-800 mb-4">Website Maintenance</h3>
+        <p class="text-gray-600 mb-6">
+          Layanan pemeliharaan website untuk menjaga performa dan keamanan optimal.
+        </p>
+        <ul class="text-gray-600 space-y-2">
+          <li><i class="fas fa-check text-yellow-500 mr-2"></i>Regular Updates</li>
+          <li><i class="fas fa-check text-yellow-500 mr-2"></i>Security Monitoring</li>
+          <li><i class="fas fa-check text-yellow-500 mr-2"></i>Backup Service</li>
+          <li><i class="fas fa-check text-yellow-500 mr-2"></i>24/7 Support</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Portfolio Section -->
+<section id="portfolio" class="py-20 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16 fade-in">
+      <h2 class="font-display text-4xl font-bold text-yellow-800 mb-4">Portfolio</h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Beberapa project terbaik yang telah saya kerjakan
+      </p>
+    </div>
+    <!-- Portfolio Filter -->
+    <div class="flex justify-center mb-12 fade-in">
+      <div class="flex flex-wrap gap-4">
+        <button class="filter-btn active px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-medium" data-filter="all">All Projects</button>
+        <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-medium" data-filter="web">Web Development</button>
+        <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-medium" data-filter="ecommerce">E-Commerce</button>
+      </div>
+    </div>
+    <!-- Portfolio Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Project 1 -->
+      <div class="portfolio-item web fade-in" data-category="ecommerce">
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover-lift">
+          <div class="w-full max-w-xs sm:max-w-sm md:max-w-md aspect-[16/9] overflow-hidden rounded shadow mx-auto">
+            <img src="assets/toko-meksiko.png" alt="Toko Sepatu Meksiko" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-6">
+            <h3 class="font-semibold text-xl text-orange-600 mb-2">Toko Sepatu Meksiko</h3>
+            <p class="text-gray-600 mb-4">Website Toko Sepatu Meksiko yang menampilkan koleksi sepatu lengkap, informasi harga, serta memudahkan pelanggan melakukan pembelian dan pemesanan sewa secara praktis.</p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-orange-600 font-medium">E-Commerce Website</span>
+              <a href="https://web-toko-sepatu.netlify.app/" class="text-orange-600 hover:text-orange-800"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Project 2 -->
+      <div class="portfolio-item web fade-in" data-category="web">
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover-lift">
+          <div class="w-full max-w-xs sm:max-w-sm md:max-w-md aspect-[16/9] overflow-hidden rounded shadow mx-auto">
+            <img src="assets/servis-elektronik.png" alt="Toko Sepatu Meksiko" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-6">
+            <h3 class="font-semibold text-xl text-purple-700 mb-2">Jasa Service Elektronik</h3>
+            <p class="text-gray-600 mb-4">Website jasa servis elektronik yang memudahkan pelanggan melihat layanan, memesan servis, dan menghubungi teknisi secara cepat dan praktis.</p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-purple-600 font-medium">UMKM Website</span>
+              <a href="https://web-paket-basic.netlify.app/" class="text-purple-600 hover:text-purple-800"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Project 3 -->
+      <div class="portfolio-item ecommerce fade-in" data-category="ecommerce">
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover-lift">
+          <div class="w-full max-w-xs sm:max-w-sm md:max-w-md aspect-[16/9] overflow-hidden rounded shadow mx-auto">
+            <img src="assets/toko-kue.png" alt="Toko Sepatu Meksiko" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-6">
+            <h3 class="font-semibold text-xl text-yellow-600 mb-2">Toko Online Kue</h3>
+            <p class="text-gray-600 mb-4">Website toko kue online yang menampilkan katalog cake premium, harga, dan memudahkan pelanggan melakukan pemesanan secara cepat dan praktis.</p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-yellow-600 font-medium">E-Commerce Website</span>
+              <a href="https://web-paket-premium.netlify.app/" class="text-yellow-600 hover:text-yellow-800"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Project 4 -->
+      <div class="portfolio-item ecommerce fade-in" data-category="web">
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover-lift">
+          <div class="w-full max-w-xs sm:max-w-sm md:max-w-md aspect-[16/9] overflow-hidden rounded shadow mx-auto">
+            <img src="assets/toko-elektronik.png" alt="Toko Sepatu Meksiko" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-6">
+            <h3 class="font-semibold text-xl text-sky-600 mb-2">Toko Online Elektronik</h3>
+            <p class="text-gray-600 mb-4">Website Toko Elektronik yang menampilkan katalog produk lengkap dengan harga dan gambar, serta memudahkan pelanggan langsung menghubungi via WhatsApp untuk pemesanan.</p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-sky-600 font-medium">UMKM Website</span>
+              <a href="https://web-paket-standard.netlify.app/" class="text-sky-600 hover:text-sky-800"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Project 5 -->
+      <div class="portfolio-item ecommerce fade-in" data-category="web">
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover-lift">
+          <div class="w-full max-w-xs sm:max-w-sm md:max-w-md aspect-[16/9] overflow-hidden rounded shadow mx-auto">
+            <img src="assets/yayasan-sabda.png" alt="Toko Sepatu Meksiko" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-6">
+            <h3 class="font-semibold text-xl text-slate-500 mb-2">Yayasan Sabilulhuda</h3>
+            <p class="text-gray-600 mb-4">Website Yayasan Sabilulhuda yang menampilkan profil lembaga, kegiatan, dan informasi kontak untuk memudahkan pengunjung mengakses informasi secara cepat.</p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-slate-500 font-medium">Lembaga Website</span>
+              <a href="https://yayasansabilulhuda.com" class="text-slate-500 hover:text-slate-500"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Client Testimonials -->
+    <div class="mt-20 fade-in">
+      <h3 class="font-display text-3xl font-bold text-yellow-800 text-center mb-12">Testimoni Klien</h3>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Testimonial 1 -->
+        <div class="bg-gray-50 rounded-2xl p-6 hover-lift">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-semibold">A</div>
+            <div class="ml-4">
+              <h4 class="font-semibold text-gray-800">Ustadz Ato Illah Bastomi</h4>
+              <p class="text-gray-600 text-sm">Ketua Yayasan Sabilulhuda</p>
+            </div>
+          </div>
+          <p class="text-gray-600 italic">“Alhamdulillah, syukron jazakumullohu khoiron atas pembuatan website Yayasan Sabilulhuda. Kita lihat di HP dan laptop, berjalan lancar.”</p>
+          <div class="flex text-yellow-400 mt-4">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing Section -->
+<section id="pricing" class="py-20 bg-gray-50 relative overflow-hidden">
+  <!-- Background Elements -->
+  <div class="absolute inset-0">
+    <div class="absolute top-10 left-10 w-32 h-32 bg-yellow-100 rounded-full opacity-50"></div>
+    <div class="absolute bottom-10 right-10 w-24 h-24 bg-yellow-100 rounded-full opacity-50"></div>
+  </div>
+  <div class="container mx-auto px-4 relative z-10">
+    <!-- Promo Banner -->
+    <div class="text-center mb-8 fade-in">
+      <div class="promo-badge inline-block px-6 py-2 rounded-full text-amber-600 font-semibold mb-4">
+        <i class="fas fa-fire mr-2"></i>
+        PROMO SEPTEMBER 2025
+      </div>
+      <h2 class="font-display text-4xl font-bold text-yellow-800 mb-4">Paket Harga Website</h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Dapatkan diskon spesial hingga 67% untuk semua paket website di bulan September!
+      </p>
+    </div>
+    <!-- Packages -->
+    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <!-- Basic -->
+      <div class="pricing-card bg-white rounded-3xl p-8 shadow-xl hover-lift fade-in relative">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-rocket text-2xl text-yellow-600"></i>
+          </div>
+          <h3 class="font-display text-2xl font-bold text-yellow-800 mb-2">Basic</h3>
+          <p class="text-gray-600 mb-6">Perfect untuk bisnis kecil dan personal</p>
+          <!-- Pricing -->
+          <div class="mb-8">
+            <div class="text-gray-400 line-through text-lg mb-2">Rp 2.000.000</div>
+            <div class="text-4xl font-bold text-yellow-600 mb-2">Rp 1.199.000</div>
+            <div class="text-sm text-gray-600">Hemat Rp 799.000</div>
+          </div>
+          <!-- Features -->
+          <ul class="text-left space-y-3 mb-8">
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>1 Halaman landing page (scroll)</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Responsive Design</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>SEO Optimized</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Hosting & Domain 1 tahun</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Estimasi selesai: 2-3 hari</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Free support 1 pekan</li>
+          </ul>
+          <button 
+            class="choose-package w-full bg-yellow-600 text-white py-3 rounded-full font-semibold hover:bg-yellow-700 transition-all duration-300 hover:scale-105" 
+            data-package="Basic">
+            Pilih Paket Basic
+          </button>
+        </div>
+      </div>
+      <!-- Standard -->
+      <div class="pricing-card bg-white rounded-3xl p-8 shadow-xl hover-lift fade-in relative border-2 border-yellow-500">
+        <!-- Popular Badge -->
+        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+          <span class="bg-yellow-500 text-white px-6 py-2 rounded-full text-sm font-semibold">MOST POPULAR</span>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-star text-2xl text-white"></i>
+          </div>
+          <h3 class="font-display text-2xl font-bold text-gray-800 mb-2">Standard</h3>
+          <p class="text-gray-600 mb-6">Ideal untuk bisnis menengah</p>
+          <!-- Pricing -->
+          <div class="mb-8">
+            <div class="text-gray-400 line-through text-lg mb-2">Rp 4.000.000</div>
+            <div class="text-4xl font-bold text-yellow-600 mb-2">Rp 1.299.000</div>
+            <div class="text-sm text-gray-600">Hemat Rp 2.699.000</div>
+          </div>
+          <!-- Features -->
+          <ul class="text-left space-y-3 mb-8">
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>5 Halaman Website</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Responsive Design</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>SEO Basic</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Contact Form</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Social Media Integration</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>1 Bulan Support</li>
+          </ul>
+          <button 
+            class="choose-package w-full bg-yellow-600 text-white py-3 rounded-full font-semibold hover:bg-yellow-700 transition-all duration-300 hover:scale-105" 
+            data-package="Standard">
+            Pilih Paket Standard
+          </button>
+        </div>
+      </div>
+      <!-- Premium -->
+      <div class="pricing-card bg-white rounded-3xl p-8 shadow-xl hover-lift fade-in relative">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-crown text-2xl text-white"></i>
+          </div>
+          <h3 class="font-display text-2xl font-bold text-yellow-800 mb-2">Premium</h3>
+          <p class="text-yellow-600 mb-6">Solusi lengkap untuk enterprise</p>
+          <!-- Pricing -->
+          <div class="mb-8">
+            <div class="text-yellow-400 line-through text-lg mb-2">Rp 6.000.000</div>
+            <div class="text-4xl font-bold text-yellow-600 mb-2">Rp 1.499.000</div>
+            <div class="text-sm text-yellow-600">Hemat Rp 4.499.000</div>
+          </div>
+          <!-- Features -->
+          <ul class="text-left space-y-3 mb-8">
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>5 Halaman Website</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Advanced Responsive</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>SEO Dasar</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>CMS Sederhana</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>E-commerce Dasar (tanpa Payment Gateway kompleks)</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Payment Gateway</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>3 Bulan Support</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Free Maintenance</li>
+          </ul>
+          <button 
+            class="choose-package w-full bg-yellow-600 text-white py-3 rounded-full font-semibold hover:bg-yellow-700 transition-all duration-300 hover:scale-105" 
+            data-package="Premium">
+            Pilih Paket Premium
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Promo Info -->
+    <div class="text-center mt-12 fade-in">
+      <div class="bg-yellow-50 border border-yellow-200 rounded-2xl p-6 max-w-2xl mx-auto">
+        <div class="flex items-center justify-center mb-4">
+          <i class="fas fa-clock text-yellow-600 text-2xl mr-3"></i>
+          <h4 class="font-semibold text-yellow-800">Promo Terbatas!</h4>
+        </div>
+        <p class="text-yellow-700 mb-4">
+          Penawaran spesial ini hanya berlaku sampai akhir September 2025. Jangan lewatkan kesempatan untuk mendapatkan website profesional dengan harga terbaik!
+        </p>
+        <div class="flex justify-center space-x-4 text-sm text-yellow-600">
+          <span><i class="fas fa-check mr-1"></i>Konsultasi Gratis</span>
+          <span><i class="fas fa-check mr-1"></i>Revisi Unlimited</span>
+          <span><i class="fas fa-check mr-1"></i>Garansi 100%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-20 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16 fade-in">
+      <h2 class="font-display text-4xl font-bold text-yellow-800 mb-4">Hubungi Saya</h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Mari diskusikan project Anda dan wujudkan website impian bersama-sama
+      </p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+      <!-- Contact Info -->
+      <div class="fade-in">
+        <h3 class="font-display text-2xl font-semibold text-yellow-800 mb-8">Mari Berkolaborasi</h3>
+        <div class="space-y-6">
+          <!-- Email -->
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mr-4">
+              <i class="fas fa-envelope text-yellow-600"></i>
+            </div>
+            <div>
+              <h4 class="font-semibold text-yellow-800">Email</h4>
+              <p class="text-gray-600">webdevfirdaus@gmail.com</p>
+            </div>
+          </div>
+          <!-- Phone -->
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mr-4">
+              <i class="fas fa-phone text-yellow-600"></i>
+            </div>
+            <div>
+              <h4 class="font-semibold text-yellow-800">Telepon</h4>
+              <p class="text-gray-600">+62 895-4132-63355</p>
+            </div>
+          </div>
+          <!-- WhatsApp -->
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mr-4">
+              <i class="fab fa-whatsapp text-yellow-600"></i>
+            </div>
+            <div>
+              <h4 class="font-semibold text-yellow-800">WhatsApp</h4>
+              <p class="text-gray-600">+62 895-4132-63355</p>
+            </div>
+          </div>
+          <!-- Location -->
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mr-4">
+              <i class="fas fa-map-marker-alt text-yellow-600"></i>
+            </div>
+            <div>
+              <h4 class="font-semibold text-yellow-800">Lokasi</h4>
+              <p class="text-gray-600">Jakarta, Indonesia</p>
+            </div>
+          </div>
+        </div>
+        <!-- Social Media -->
+        <div class="mt-8">
+          <h4 class="font-semibold text-yellow-800 mb-4">Follow Me</h4>
+          <div class="flex space-x-4">
+            <a href="#" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-all duration-300 hover-scale">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center text-white hover:bg-blue-500 transition-all duration-300 hover-scale">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center text-white hover:bg-pink-700 transition-all duration-300 hover-scale">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center text-white hover:bg-blue-800 transition-all duration-300 hover-scale">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-white hover:bg-gray-900 transition-all duration-300 hover-scale">
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="formPemesananTitle" class="py-16 bg-gray-50 fade-in">
+  <div class="max-w-3xl mx-auto px-6">
     
-    <!-- Saldo -->
-    <div class="bg-gradient-to-r from-green-300 to-green-600 p-5 rounded-xl shadow-lg 
-                hover:scale-105 transition-transform duration-200">
-      <div class="flex justify-between items-center">
-        <div>
-          <p class="text-gray-700 font-medium">Saldo</p>
-          <p id="saldo" class="text-2xl font-bold mt-2">Rp0</p>
-        </div>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-             fill="none" stroke="currentColor" stroke-width="1.8"
-             stroke-linecap="round" stroke-linejoin="round"
-             class="w-9 h-9 text-slate-800 flex-shrink-0">
-          <path d="M3 7.5A2.5 2.5 0 0 1 5.5 5H16a2 2 0 0 1 2 2v1.5M3 9.5h15a2 2 0 0 1 2 2v4A2.5 2.5 0 0 1 17.5 18h-12A2.5 2.5 0 0 1 3 15.5v-6Z"/>
-          <path d="M17 12.5h2.5M7 7.5h6"/>
-        </svg>
-      </div>
+    <!-- Judul Section -->
+    <div class="text-center mb-10">
+      <h2 class="text-3xl font-bold text-yellow-800 mb-4">Form Pemesanan</h2>
+      <p class="text-gray-600">
+        Silakan isi form berikut untuk konsultasi atau memesan paket website sesuai kebutuhan Anda.
+      </p>
     </div>
 
-    <!-- Pemasukan -->
-    <div class="bg-gradient-to-r from-blue-300 to-blue-100 p-5 rounded-xl shadow-lg 
-                hover:scale-105 transition-transform duration-200">
-      <div class="flex justify-between items-center">
-        <div>
-          <p class="text-gray-700 font-medium">Pemasukan</p>
-          <p id="totalPemasukan" class="text-2xl font-bold mt-2">Rp0</p>
-        </div>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-             fill="none" stroke="currentColor" stroke-width="1.8"
-             stroke-linecap="round" stroke-linejoin="round"
-             class="w-9 h-9 text-slate-800 flex-shrink-0">
-          <ellipse cx="9" cy="6.5" rx="6" ry="2.5"/>
-          <path d="M3 6.5V10c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5V6.5M6 13.5V17c0 1.4 2.7 2.5 6 2.5 
-                   2.2 0 4.1-.5 5.2-1.2"/>
-          <ellipse cx="18" cy="13" rx="3" ry="1.2"/>
-          <path d="M15 13v3c0 .7 1.3 1.2 3 1.2s3-.5 3-1.2v-3"/>
-        </svg>
-      </div>
-    </div>
+    <!-- Contact Form -->
+    <form id="contactForm" class="space-y-6 bg-white p-8 rounded-2xl shadow-lg">
+      <!-- Hidden input untuk paket & nominal -->
+      <input type="hidden" id="paket-input" name="package" />
+      <input type="hidden" id="nominal-input" name="nominal" value="" />
 
-    <!-- Pengeluaran -->
-    <div class="bg-gradient-to-r from-red-300 to-red-100 p-5 rounded-xl shadow-lg 
-                hover:scale-105 transition-transform duration-200">
-      <div class="flex justify-between items-center">
-        <div>
-          <p class="text-gray-700 font-medium">Pengeluaran</p>
-          <p id="totalPengeluaran" class="text-2xl font-bold mt-2">Rp0</p>
-        </div>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-             fill="none" stroke="currentColor" stroke-width="2"
-             stroke-linecap="round" stroke-linejoin="round"
-             class="w-9 h-9 text-slate-800 flex-shrink-0">
-          <path d="M12 4v16m0 0l-6-6m6 6l6-6"/>
-        </svg>
+      <!-- Nama Lengkap -->
+      <div class="form-group">
+        <label class="block text-gray-700 font-medium mb-2">Nama Lengkap</label>
+        <input type="text" name="name" required placeholder="Masukkan nama lengkap Anda" 
+              class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-yellow-500" />
       </div>
-    </div>
-  </div>
 
-  <!-- Form Input -->
-  <div class="bg-white p-6 rounded-xl shadow-lg mb-6">
-    <form id="formTransaksi" class="flex flex-col sm:flex-row gap-3 items-center">
-      <input type="text" id="deskripsi" placeholder="Deskripsi" 
-             class="border p-3 rounded-lg flex-1 focus:ring-2 focus:ring-blue-400">
-      <input type="number" id="nominal" placeholder="Nominal" 
-             class="border p-3 rounded-lg w-full sm:w-28 focus:ring-2 focus:ring-blue-400">
-      <select id="tipe" 
-              class="border p-3 rounded-lg w-full sm:w-36 focus:ring-2 focus:ring-blue-400">
-        <option value="pemasukan">Pemasukan</option>
-        <option value="pengeluaran">Pengeluaran</option>
-      </select>
-      <button type="submit" 
-              class="bg-blue-500 text-white p-3 rounded-lg w-full sm:w-32 
-                     hover:bg-blue-600 active:scale-95 transition-all flex items-center justify-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" 
-             viewBox="0 0 24 24" stroke="currentColor" 
-             class="w-5 h-5 flex-shrink-0">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                d="M12 4v16m8-8H4" />
-        </svg>
-        Tambahkan
+      <!-- Email -->
+      <div class="form-group">
+        <label class="block text-gray-700 font-medium mb-2">Email</label>
+        <input type="email" name="email" required placeholder="contoh@email.com"
+              class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-yellow-500" />
+      </div>
+
+      <!-- Nomor Telepon -->
+      <div class="form-group">
+        <label class="block text-gray-700 font-medium mb-2">Nomor Telepon</label>
+        <input type="tel" name="phone" placeholder="0812xxxxxxx"
+              class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-yellow-500" />
+      </div>
+
+      <!-- Paket yang Diminati -->
+      <div class="form-group">
+        <label class="block text-gray-700 font-medium mb-2">Paket yang Diminati</label>
+        <select id="package-select" name="package-select"
+                class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-yellow-500">
+          <option value="">Pilih Paket</option>
+          <option value="basic">Basic - Rp 1.500.000</option>
+          <option value="standard">Standard - Rp 2.500.000</option>
+          <option value="premium">Premium - Rp 4.000.000</option>
+          <option value="custom">Custom Package</option>
+        </select>
+      </div>
+
+      <!-- Pesan -->
+      <div class="form-group">
+        <label class="block text-gray-700 font-medium mb-2">Pesan</label>
+        <textarea name="message" rows="5" required placeholder="Ceritakan tentang pesanan website yang Anda inginkan..."
+                  class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-yellow-500"></textarea>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="w-full bg-yellow-600 text-white py-3 rounded-xl font-semibold hover:bg-yellow-700 transition-all duration-300 flex items-center justify-center">
+        <span class="submit-text">Kirim Pesan</span>
       </button>
     </form>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-12">
+  <div class="container mx-auto px-4">
+    <div class="grid md:grid-cols-4 gap-8">
+      <!-- Brand -->
+      <div>
+        <div class="font-display font-bold text-2xl mb-4">
+          Firdaus<span class="text-yellow-400">WebDev</span>
+        </div>
+        <p class="text-gray-400 mb-4">
+          Web Developer profesional yang siap membantu mewujudkan website impian Anda dengan teknologi terkini.
+        </p>
+        <div class="flex space-x-4">
+          <a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors duration-300"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors duration-300"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors duration-300"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors duration-300"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <!-- Layanan -->
+      <div>
+        <h4 class="font-semibold text-lg mb-4">Layanan</h4>
+        <ul class="space-y-2 text-gray-400">
+          <li><a href="#" class="hover:text-yellow-400 transition-colors duration-300">Web Development</a></li>
+          <li><a href="#" class="hover:text-yellow-400 transition-colors duration-300">UI/UX Design</a></li>
+          <li><a href="#" class="hover:text-yellow-400 transition-colors duration-300">E-Commerce</a></li>
+          <li><a href="#" class="hover:text-yellow-400 transition-colors duration-300">Website Maintenance</a></li>
+          <li><a href="#" class="hover:text-yellow-400 transition-colors duration-300">SEO Optimization</a></li>
+        </ul>
+      </div>
+      <!-- Quick Links -->
+      <div>
+        <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
+        <ul class="space-y-2 text-gray-400">
+          <li><a href="#home" class="hover:text-yellow-400 transition-colors duration-300">Home</a></li>
+          <li><a href="#about" class="hover:text-yellow-400 transition-colors duration-300">About</a></li>
+          <li><a href="#portfolio" class="hover:text-yellow-400 transition-colors duration-300">Portfolio</a></li>
+          <li><a href="#pricing" class="hover:text-yellow-400 transition-colors duration-300">Pricing</a></li>
+          <li><a href="#contact" class="hover:text-yellow-400 transition-colors duration-300">Contact</a></li>
+        </ul>
+      </div>
+      <!-- Kontak -->
+      <div>
+        <h4 class="font-semibold text-lg mb-4">Kontak</h4>
+        <ul class="space-y-2 text-gray-400">
+          <li class="flex items-center"><i class="fas fa-envelope mr-2"></i>webdevfirdaus@gmail.com</li>
+          <li class="flex items-center"><i class="fas fa-phone mr-2"></i>+62 895-4132-63355</li>
+          <li class="flex items-center"><i class="fab fa-whatsapp mr-2"></i>+62 895-4132-63355</li>
+          <li class="flex items-center"><i class="fas fa-map-marker-alt mr-2"></i>Jakarta, Indonesia</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Copyright -->
+    <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+      <p>© 2024 Firdaus Muhammad bin Sulaiman. All rights reserved.</p>
+    </div>
   </div>
+</footer>
 
-  <!-- Chart -->
-  <div class="bg-white p-6 rounded-xl shadow-lg mb-6">
-    <canvas id="chartKeuangan"></canvas>
+<!-- Back to Top Button -->
+<button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 bg-yellow-600 text-white rounded-full shadow-lg hover:bg-yellow-700 transition-all duration-300 opacity-0 invisible hover-scale">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- Success Modal -->
+<div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 invisible opacity-0 transition-opacity duration-300">
+  <div class="bg-white rounded-2xl p-8 max-w-md mx-4 text-center">
+    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+      <i class="fas fa-check text-2xl text-green-600"></i>
+    </div>
+    <h3 class="font-semibold text-xl text-gray-800 mb-2">Pesan Terkirim!</h3>
+    <p class="text-gray-600 mb-6">Terima kasih atas pesan Anda. Saya akan segera menghubungi Anda kembali.</p>
+    <button onclick="closeModal()" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors duration-300">
+      Tutup
+    </button>
   </div>
+</div>
 
-  <!-- Tombol Cetak -->
-  <button type="button" onclick="cetakLaporan()" 
-    class="bg-green-500 text-white px-4 py-2 rounded-lg mb-6 hover:bg-green-600 active:scale-95 transition-all">
-    Cetak Laporan
-  </button>
+<!-- Preloader -->
+<div id="preloader" class="fixed inset-0 bg-white flex items-center justify-center z-50" style="display: none;">
+  <div class="loading"></div>
+</div>
 
-  <!-- Tabel -->
-  <div id="tabel" class="bg-white p-6 rounded-xl shadow-lg overflow-x-auto">
-    <table class="min-w-full divide-y divide-gray-200">
-      <thead class="bg-gray-50">
-        <tr>
-          <th class="px-4 py-2 text-left text-gray-600 font-medium">Deskripsi</th>
-          <th class="px-4 py-2 text-left text-gray-600 font-medium">Nominal</th>
-          <th class="px-4 py-2 text-left text-gray-600 font-medium">Tipe</th>
-          <th class="px-4 py-2 text-left text-gray-600 font-medium">Timestamp</th>
-          <th class="px-4 py-2 text-left text-gray-600 font-medium">Aksi</th>
-
-        </tr>
-      </thead>
-      <tbody id="tabelTransaksi" class="divide-y divide-gray-100"></tbody>
-    </table>
-  </div>
-
+<!-- Script -->
 <script src="app.js"></script>
 </body>
 </html>

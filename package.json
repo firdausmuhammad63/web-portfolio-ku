@@ -1,5 +1,17 @@
 {
+  "name": "web-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio Web Development dengan Tailwind CSS",
+  "main": "index.js",
+  "scripts": {
+    "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
+    "watch": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
+  },
+  "author": "Firdaus Muhammad",
+  "license": "MIT",
   "devDependencies": {
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^3.4.17",
+    "autoprefixer": "^10.4.15",
+    "postcss": "^8.4.26"
   }
 }
