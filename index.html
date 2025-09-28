@@ -4,39 +4,39 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <!-- Title & SEO -->
-  <title>Firdaus Muhammad - Web Developer Portfolio</title>
-  <meta name="description" content="Portfolio Firdaus Muhammad bin Sulaiman - Web Developer profesional dengan pengalaman dalam pembuatan website modern dan responsif." />
-  <meta name="keywords" content="Firdaus Muhammad, Web Developer, Portfolio, Tailwind CSS, Responsive Website, UI/UX, Freelancer" />
-  <meta name="author" content="Firdaus Muhammad" />
+<!-- Title & SEO -->
+<title>Firdaus Muhammad - Web Developer Portfolio</title>
+<meta name="description" content="Portfolio Firdaus Muhammad bin Sulaiman - Web Developer profesional dengan pengalaman dalam pembuatan website modern dan responsif." />
+<meta name="keywords" content="Firdaus Muhammad, Web Developer, Portfolio, Tailwind CSS, Responsive Website, UI/UX, Freelancer" />
+<meta name="author" content="Firdaus Muhammad" />
 
-  <!-- Favicon -->
-  <link rel="icon" href="assets/F-1.png" type="image/png" />
+<!-- Favicon -->
+<link rel="icon" href="assets/F-1.png" type="image/png" />
 
-  <!-- Open Graph / Social Preview -->
-  <meta property="og:title" content="Firdaus Muhammad - Web Developer Portfolio" />
-  <meta property="og:description" content="Portfolio Firdaus Muhammad bin Sulaiman - Web Developer profesional dengan pengalaman dalam pembuatan website modern dan responsif." />
-  <meta property="og:image" content="https://webdev-firdaus.netlify.app/assets/F-1.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Firdaus Muhammad - Web Developer Portfolio" />
-  <meta property="og:url" content="https://webdev-firdaus.netlify.app/" />
-  <meta property="og:type" content="website" />
+<!-- Open Graph / Social Preview -->
+<meta property="og:title" content="Firdaus Muhammad - Web Developer Portfolio" />
+<meta property="og:description" content="Portfolio Firdaus Muhammad bin Sulaiman - Web Developer profesional dengan pengalaman dalam pembuatan website modern dan responsif." />
+<meta property="og:image" content="https://webdev-firdaus.netlify.app/assets/F-1.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Firdaus Muhammad - Web Developer Portfolio" />
+<meta property="og:url" content="https://webdev-firdaus.netlify.app/" />
+<meta property="og:type" content="website" />
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Firdaus Muhammad - Web Developer Portfolio" />
-  <meta name="twitter:description" content="Portfolio Firdaus Muhammad bin Sulaiman - Web Developer profesional dengan pengalaman dalam pembuatan website modern dan responsif." />
-  <meta name="twitter:image" content="https://webdev-firdaus.netlify.app/assets/F-1.png" />
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Firdaus Muhammad - Web Developer Portfolio" />
+<meta name="twitter:description" content="Portfolio Firdaus Muhammad bin Sulaiman - Web Developer profesional dengan pengalaman dalam pembuatan website modern dan responsif." />
+<meta name="twitter:image" content="https://webdev-firdaus.netlify.app/assets/F-1.png" />
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-  <!-- Tailwind CSS -->
-  <link rel="stylesheet" href="dist/output.css" />
+<!-- Tailwind CSS -->
+<link rel="stylesheet" href="dist/output.css" />
 
 
 <style>
@@ -92,6 +92,7 @@
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }
+
 .glass {
   background: rgba(239, 181, 6, 0.572);
   backdrop-filter: blur(10px);
@@ -151,10 +152,10 @@ section { opacity: 1; visibility: visible; }
   emailjs.init("p7xNVreuIYAZ4wiJf"); // Public Key
 </script>
 </head>
-<body class="gradient-bg text-gray-800 font-sans">
+<body class="gradient-bg pt-16 text-gray-800 font-sans ">
 
 <!-- Navigation -->
-<nav class="fixed top-0 w-full bg-amber-100 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
+<nav class="fixed top-0 w-full bg-amber-100 shadow-sm z-50 transition-all duration-300">
   <div class="container mx-auto px-4">
     <div class="flex justify-between items-center py-4">
       <!-- Logo -->
@@ -193,7 +194,7 @@ section { opacity: 1; visibility: visible; }
 </nav>
 
 <!-- Hero Section -->
-<section id="home" class="min-h-screen flex items-center gradient-bg relative overflow-hidden">
+<section id="home" class="min-h-screen pt-24 pb-12 flex flex-col justify-center items-center gradient-bg relative overflow-hidden md:py-24">
   <!-- Background Elements -->
   <div class="absolute inset-0">
     <div class="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full animate-float"></div>
@@ -202,9 +203,31 @@ section { opacity: 1; visibility: visible; }
   </div>
 
   <div class="container mx-auto px-4 relative z-10">
-    <div class="grid md:grid-cols-2 gap-12 items-center">
-      <!-- Text Content -->
-      <div class="text-white">
+    <div class="grid md:grid-cols-2 gap-12 items-center flex-col-reverse md:flex-row">
+      <!-- Gambar & Medsos di satu blok fleksibel -->
+      <div class="animate-fadeInRight order-2 md:order-1 flex flex-col justify-center items-center">
+        <!-- Gambar Profil -->
+        <div class="w-60 h-60 mx-auto bg-white/10 rounded-full flex items-center justify-center animate-pulse-custom overflow-hidden">
+          <img src="assets/F.jpeg" alt="Profile" class="w-full h-full object-cover" />
+        </div>
+        <!-- Tautan Sosial (dipindahkan ke sini) -->
+        <div class="flex space-x-4 mt-6 justify-center">
+            <a href="#" class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-amber-800 transition-all duration-300 hover-scale">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="#" class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-amber-800 transition-all duration-300 hover-scale">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="#" class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-amber-800 transition-all duration-300 hover-scale">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://wa.me/6281234567890" target="_blank" class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-amber-800 transition-all duration-300 hover-scale">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+      </div>
+      <!-- Konten Teks -->
+      <div class="text-white text-center md:text-left order-1 md:order-2">
         <div class="animate-fadeInLeft">
           <p class="text-lg mb-4 opacity-90">Assalamu'alaikum, I'm</p>
           <h1 class="hero-title font-display font-bold text-4xl md:text-6xl mb-4">
@@ -216,40 +239,12 @@ section { opacity: 1; visibility: visible; }
           <p class="text-lg opacity-90 mb-8 leading-relaxed">
             Saya adalah seorang web developer profesional dengan pengalaman dalam menciptakan website modern, responsif, dan user-friendly. Mari wujudkan ide digital Anda!
           </p>
-          <div class="flex flex-col sm:flex-row gap-4">
+          <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
             <a href="#portfolio" class="bg-amber-100 text-yellow-800 px-8 py-3 rounded-full font-semibold hover:bg-amber-100 transition-all duration-300 hover-scale text-center">
               Lihat Portfolio
             </a>
             <a href="#contact" class="border-2 border-amber-200 text-white px-8 py-3 rounded-full font-semibold hover:bg-amber-100 hover:text-yellow-800 transition-all duration-300 text-center">
               Hubungi Saya
-            </a>
-          </div>
-        </div>
-      </div>
-      <!-- Profile Image -->
-      <div class="animate-fadeInRight">
-        <div class="relative">
-          <div class="w-60 h-60 mx-auto bg-white/10 rounded-full flex items-center justify-center animate-pulse-custom overflow-hidden">
-            <!-- Gambar PNG -->
-            <img src="assets/F.jpeg" alt="Profile" class="w-full h-full object-cover" />
-          </div>
-          <!-- Social Links -->
-          <div class="absolute mt-7 left-1/2 transform -translate-x-1/2 flex space-x-4">
-            <a href="#" class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-amber-800 transition-all duration-300 hover-scale">
-              <i class="fab fa-github"></i>
-            </a>
-
-            <a href="#" class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-amber-800 transition-all duration-300 hover-scale">
-              <i class="fab fa-linkedin"></i>
-            </a>
-
-            <a href="#" class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-amber-800 transition-all duration-300 hover-scale">
-              <i class="fab fa-instagram"></i>
-            </a>
-            
-            <a href="https://wa.me/6281234567890" target="_blank"
-              class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-amber-800 transition-all duration-300 hover-scale">
-              <i class="fab fa-whatsapp"></i>
             </a>
           </div>
         </div>
@@ -261,6 +256,7 @@ section { opacity: 1; visibility: visible; }
     <i class="fas fa-chevron-down text-2xl"></i>
   </div>
 </section>
+
 
 <!-- About Section -->
 <section id="about" class="py-20 bg-white">
@@ -721,19 +717,13 @@ section { opacity: 1; visibility: visible; }
         <div class="mt-8">
           <h4 class="font-semibold text-yellow-800 mb-4">Follow Me</h4>
           <div class="flex space-x-4">
-            <a href="#" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-all duration-300 hover-scale">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" class="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center text-white hover:bg-blue-500 transition-all duration-300 hover-scale">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#" class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center text-white hover:bg-pink-700 transition-all duration-300 hover-scale">
+            <a href="https://www.instagram.com/p/DOi8fWREkM6/" class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center text-white hover:bg-pink-700 transition-all duration-300 hover-scale">
               <i class="fab fa-instagram"></i>
             </a>
-            <a href="#" class="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center text-white hover:bg-blue-800 transition-all duration-300 hover-scale">
+            <a href="www.linkedin.com/in/firdaus-muhammad-bin-sulaiman-478201225" class="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center text-white hover:bg-blue-800 transition-all duration-300 hover-scale">
               <i class="fab fa-linkedin-in"></i>
             </a>
-            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-white hover:bg-gray-900 transition-all duration-300 hover-scale">
+            <a href="https://github.com/firdausmuhammad63" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-white hover:bg-gray-900 transition-all duration-300 hover-scale">
               <i class="fab fa-github"></i>
             </a>
           </div>
