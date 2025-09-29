@@ -146,6 +146,57 @@ section { opacity: 1; visibility: visible; }
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: #f1f5f9; }
 ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #c49a6c, #6b4226);border-radius: 4px;}
+/* Floating button styles */
+.floating-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  padding: 1rem 1.5rem;
+  background-color: #7d5b44;
+  color: white;
+  font-weight: 600;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  font-size: 1rem;
+  display: inline-flex; /* Menggunakan inline-flex */
+  align-items: center; /* Meratakan item secara vertikal */
+  animation: float-btn 3s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+.floating-btn:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Atur jarak antara SVG dan teks */
+.floating-btn svg {
+  margin-right: 8px;
+  /* vertical-align: middle; tidak diperlukan jika display: flex/inline-flex */
+}
+
+/* Floating animation */
+@keyframes float-btn {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@media (max-width: 640px) {
+  .floating-btn {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+  }
+}
 </style>
 </head>
 <body class="gradient-bg pt-16 text-gray-800 font-sans ">
@@ -531,8 +582,7 @@ section { opacity: 1; visibility: visible; }
       </div>
       <h2 class="font-display text-4xl font-bold text-yellow-800 mb-4">Paket Harga Website</h2>
       <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-        Dapatkan diskon spesial hingga 67% untuk semua paket website di bulan September!
-      </p>
+        Pilih paket website favorit Anda dan nikmati <strong>hingga diskon 67%</strong> sepanjang bulan September!      </p>
     </div>
     <!-- Packages -->
     <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -882,9 +932,10 @@ section { opacity: 1; visibility: visible; }
 </footer>
 
 <!-- Back to Top Button -->
-<button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 bg-yellow-600 text-white rounded-full shadow-lg hover:bg-yellow-700 transition-all duration-300 opacity-0 invisible hover-scale">
+<button id="backToTop" class="fixed bottom-20 right-8 w-12 h-12 bg-yellow-600 text-white rounded-full shadow-lg hover:bg-yellow-700 transition-all duration-300 opacity-0 invisible hover-scale">
   <i class="fas fa-chevron-up"></i>
 </button>
+
 
 <!-- Success Modal -->
 <div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 invisible opacity-0 transition-opacity duration-300">
@@ -905,6 +956,12 @@ section { opacity: 1; visibility: visible; }
   <div class="loading"></div>
 </div>
 
+<a href="#pricing" class="floating-btn">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.5a1 1 0 0 0-.8.4l-1.9 2.533a1 1 0 0 1-1.6 0L5.3 12.4a1 1 0 0 0-.8-.4H2a2 2 0 0 1-2-2V2zm5 4a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2H5z"/>
+  </svg>
+  <span>Langsung Pesan Website</span>
+</a>
 
 <!-- Script -->
 <script src="app.js"></script>
