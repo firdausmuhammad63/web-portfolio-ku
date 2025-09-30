@@ -669,3 +669,4 @@ document.querySelectorAll(".view-examples").forEach(button => {
     window.open(portfolioURL, "_blank");
   });
 });
+
