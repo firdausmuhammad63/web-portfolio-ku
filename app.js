@@ -7,15 +7,15 @@
 // ============================================
 window.addEventListener('load', () => {
   const preloader = document.getElementById('preloader');
-  if (preloader) {
-    setTimeout(() => {
-      preloader.style.opacity = '0';
-      setTimeout(() => {
-        preloader.style.display = 'none';
-      }, 300);
-    }, 500);
+  if(preloader){
+    preloader.style.opacity = '0'; // fade-out
+    setTimeout(() => preloader.style.display = 'none', 500); // setelah fade-out selesai
   }
+
+  // Trigger fade-in konten
+  document.querySelectorAll('.fade-in').forEach(el => el.classList.add('show'));
 });
+
 
 // ============================================
 // 2. MOBILE MENU TOGGLE
