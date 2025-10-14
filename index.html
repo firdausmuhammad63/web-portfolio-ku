@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -291,7 +291,7 @@ section { opacity: 1; visibility: visible; }
 }
 </style>
 </head>
-<body class="gradient-bg text-gray-800 font-sans ">
+<body class="gradient-bg text-gray-800 font-sans">
 
 <!-- Navigation -->
 <nav class="fixed top-0 w-full bg-yellow-200 shadow-lg z-50 transition-all duration-300">
@@ -371,7 +371,7 @@ section { opacity: 1; visibility: visible; }
       <div class="animate-fadeInRight order-1 md:order-2 flex flex-col justify-center items-center">
         <!-- Gambar Profil -->
         <div class="w-48 h-48 mx-auto bg-white/10 rounded-full flex items-center justify-center animate-pulse-custom overflow-hidden mb-6">
-          <img src="assets/F-1.png" alt="Profile" class="w-full h-full object-cover" />
+          <img src="assets/my self.png" alt="Profile" class="w-full h-full object-cover" />
         </div>
         <!-- Tautan Sosial -->
         <div class="flex space-x-4 justify-center">
@@ -398,7 +398,7 @@ section { opacity: 1; visibility: visible; }
 </section>
 
 <!-- About Section -->
-<section id="about" class="py-20 bg-white">
+<section id="about" class="py-20 bg-white scroll-mt-20">
   <div class="container mx-auto px-4">
     <div class="text-center mb-16 fade-in">
       <h2 class="font-display text-4xl font-bold text-yellow-800 mb-4">Tentang Saya</h2>
@@ -551,16 +551,16 @@ section { opacity: 1; visibility: visible; }
     <div class="flex justify-center mb-12 fade-in">
       <div class="flex flex-wrap gap-4 justify-center">
         <button class="filter-btn active px-6 py-2 rounded-full font-medium transition-all duration-300 transform hover:scale-105 border border-gray-300 text-gray-700 bg-white shadow-sm" data-filter="all">Semua Proyek</button>
-        <button class="filter-btn px-6 py-2 rounded-full font-medium transition-all duration-300 transform hover:scale-105 border border-gray-300 text-gray-700 bg-white shadow-sm" data-filter="ready">Paket Ready</button>
-        <button class="filter-btn px-6 py-2 rounded-full font-medium transition-all duration-300 transform hover:scale-105 border border-gray-300 text-gray-700 bg-white shadow-sm" data-filter="grow">Paket Grow</button>
-        <button class="filter-btn px-6 py-2 rounded-full font-medium transition-all duration-300 transform hover:scale-105 border border-gray-300 text-gray-700 bg-white shadow-sm" data-filter="ecommerce">Paket E-Commerce</button>
+        <button class="filter-btn px-6 py-2 rounded-full font-medium transition-all duration-300 transform hover:scale-105 border border-gray-300 text-gray-700 bg-white shadow-sm" data-filter="basic">Paket Basic</button>
+        <button class="filter-btn px-6 py-2 rounded-full font-medium transition-all duration-300 transform hover:scale-105 border border-gray-300 text-gray-700 bg-white shadow-sm" data-filter="standard">Paket Standard</button>
+        <button class="filter-btn px-6 py-2 rounded-full font-medium transition-all duration-300 transform hover:scale-105 border border-gray-300 text-gray-700 bg-white shadow-sm" data-filter="premium">Paket Premium</button>
       </div>
     </div>
 
     <!-- Portfolio Grid -->
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       <!-- Project 1 (E-Commerce) -->
-      <div class="portfolio-item fade-in" data-category="ecommerce">
+      <div class="portfolio-item fade-in" data-category="premium">
         <div class="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 hover-lift group">
           <div class="w-full aspect-video overflow-hidden">
             <img src="assets/toko-meksiko.png" alt="Toko Sepatu Meksiko" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
@@ -569,7 +569,7 @@ section { opacity: 1; visibility: visible; }
             <h3 class="font-semibold text-xl text-orange-600 mb-2">Toko Sepatu Meksiko</h3>
             <p class="text-gray-600 mb-4 text-sm">Website Toko Sepatu Meksiko yang menampilkan koleksi sepatu lengkap, informasi harga, serta memudahkan pelanggan melakukan pembelian dan pemesanan sewa secara praktis.</p>
             <div class="flex justify-between items-center mt-4">
-              <span class="text-xs text-gray-500 font-medium bg-gray-100 px-3 py-1 rounded-full">Paket E-Commerce</span>
+              <span class="text-xs text-gray-500 font-medium bg-gray-100 px-3 py-1 rounded-full">Paket Premium</span>
               <a href="https://website-toko-sepatu.netlify.app/" target="_blank" class="text-orange-600 hover:text-orange-800 transition-colors duration-200">
                 <i class="fas fa-external-link-alt"></i>
               </a>
@@ -579,7 +579,7 @@ section { opacity: 1; visibility: visible; }
       </div>
 
       <!-- Project 2 (Website dengan CMS) -->
-      <div class="portfolio-item fade-in" data-category="ready">
+      <div class="portfolio-item fade-in" data-category="basic">
         <div class="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 hover-lift group">
           <div class="w-full aspect-video overflow-hidden">
             <img src="assets/servis-elektronik.png" alt="Jasa Servis Elektronik" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
@@ -588,8 +588,8 @@ section { opacity: 1; visibility: visible; }
             <h3 class="font-semibold text-xl text-purple-700 mb-2">Jasa Service Elektronik</h3>
             <p class="text-gray-600 mb-4 text-sm">Website jasa servis elektronik yang dilengkapi CMS untuk memudahkan pemilik bisnis mengelola konten dan layanan.</p>
             <div class="flex justify-between items-center mt-4">
-              <span class="text-xs text-gray-500 font-medium bg-gray-100 px-3 py-1 rounded-full">Paket Grow</span>
-              <a href="https://website-servis-ac.netlify.app/" target="_blank" class="text-purple-600 hover:text-purple-800 transition-colors duration-200">
+              <span class="text-xs text-gray-500 font-medium bg-gray-100 px-3 py-1 rounded-full">Paket Standard</span>
+              <a href="https://servis-elektronik.netlify.app/" target="_blank" class="text-purple-600 hover:text-purple-800 transition-colors duration-200">
                 <i class="fas fa-external-link-alt"></i>
               </a>
             </div>
@@ -598,7 +598,7 @@ section { opacity: 1; visibility: visible; }
       </div>
       
       <!-- Project 3 (E-Commerce) -->
-      <div class="portfolio-item fade-in" data-category="ecommerce">
+      <div class="portfolio-item fade-in" data-category="premium">
         <div class="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 hover-lift group">
           <div class="w-full aspect-video overflow-hidden">
             <img src="assets/toko-kue.png" alt="Toko Online Kue" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
@@ -607,8 +607,8 @@ section { opacity: 1; visibility: visible; }
             <h3 class="font-semibold text-xl text-yellow-600 mb-2">Toko Online Kue</h3>
             <p class="text-gray-600 mb-4 text-sm">Website toko kue online yang menampilkan katalog cake premium dan memudahkan pelanggan melakukan pemesanan secara cepat dan praktis.</p>
             <div class="flex justify-between items-center mt-4">
-              <span class="text-xs text-gray-500 font-medium bg-gray-100 px-3 py-1 rounded-full">Paket E-Commerce</span>
-              <a href="https://website-toko-kue.netlify.app/" target="_blank" class="text-yellow-600 hover:text-yellow-800 transition-colors duration-200">
+              <span class="text-xs text-gray-500 font-medium bg-gray-100 px-3 py-1 rounded-full">Paket Premium</span>
+              <a href="https://paket-ecommerce.netlify.app/" target="_blank" class="text-yellow-600 hover:text-yellow-800 transition-colors duration-200">
                 <i class="fas fa-external-link-alt"></i>
               </a>
             </div>
@@ -617,7 +617,7 @@ section { opacity: 1; visibility: visible; }
       </div>
 
       <!-- Project 4 (Website dengan CMS) -->
-      <div class="portfolio-item fade-in" data-category="grow">
+      <div class="portfolio-item fade-in" data-category="standard">
         <div class="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 hover-lift group">
           <div class="w-full aspect-video overflow-hidden">
             <img src="assets/toko-elektronik.png" alt="Toko Online Elektronik" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
@@ -626,8 +626,8 @@ section { opacity: 1; visibility: visible; }
             <h3 class="font-semibold text-xl text-sky-600 mb-2">Toko Online Elektronik</h3>
             <p class="text-gray-600 mb-4 text-sm">Website Toko Elektronik yang dilengkapi CMS untuk mengelola produk dan memudahkan pelanggan langsung menghubungi via WhatsApp untuk pemesanan.</p>
             <div class="flex justify-between items-center mt-4">
-              <span class="text-xs text-gray-500 font-medium bg-gray-100 px-3 py-1 rounded-full">Paket Grow</span>
-              <a href="https://web-paket-standard.netlify.app/" target="_blank" class="text-sky-600 hover:text-sky-800 transition-colors duration-200">
+              <span class="text-xs text-gray-500 font-medium bg-gray-100 px-3 py-1 rounded-full">Paket Standard</span>
+              <a href="https://website-toko-elektronik.netlify.app/" target="_blank" class="text-sky-600 hover:text-sky-800 transition-colors duration-200">
                 <i class="fas fa-external-link-alt"></i>
               </a>
             </div>
@@ -635,18 +635,20 @@ section { opacity: 1; visibility: visible; }
         </div>
       </div>
       
-      <!-- Project 5 (Lembaga/Organisasi) -->
-      <div class="portfolio-item fade-in" data-category="ready">
+      <!-- Project 5 (UMKM Kuliner) -->
+      <div class="portfolio-item fade-in" data-category="standard">
         <div class="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 hover-lift group">
           <div class="w-full aspect-video overflow-hidden">
-            <img src="assets/yayasan-sabda.png" alt="Yayasan Sabilulhuda" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
+            <img src="assets/kebuli.png" alt="Yayasan Sabilulhuda" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
           </div>
           <div class="p-6">
-            <h3 class="font-semibold text-xl text-slate-500 mb-2">Yayasan Sabilulhuda</h3>
-            <p class="text-gray-600 mb-4 text-sm">Website Yayasan Sabilulhuda yang dilengkapi CMS untuk memudahkan admin mengelola profil, kegiatan, dan informasi kontak.</p>
+          <h3 class="text-yellow-600 mb-2 text-xl font-semibold">Firdaus Nasi Kebuli</h3>
+            <p class="text-gray-600 mb-4 text-sm">
+                Website profil untuk Firdaus Nasi Kebuli dengan desain modern dan navigasi ringan, menampilkan menu, lokasi, serta kontak pemesanan secara jelas.
+            </p>
             <div class="flex justify-between items-center mt-4">
-              <span class="text-xs text-gray-500 font-medium bg-gray-100 px-3 py-1 rounded-full">Paket Grow</span>
-              <a href="https://yayasansabilulhuda.com" target="_blank" class="text-slate-500 hover:text-slate-700 transition-colors duration-200">
+              <span class="text-xs text-gray-500 font-medium bg-gray-100 px-3 py-1 rounded-full">Paket Standard</span>
+              <a href="https://paket-company-profile.netlify.app/" target="_blank" class="text-yellow-500 hover:text-yellow-700 transition-colors duration-200">
                 <i class="fas fa-external-link-alt"></i>
               </a>
             </div>
@@ -655,20 +657,20 @@ section { opacity: 1; visibility: visible; }
       </div>
       
       <!-- Project 6 (Resto/Warung Makan)-->
-      <div class="portfolio-item fade-in" data-category="ready">
+      <div class="portfolio-item fade-in" data-category="basic">
         <div class="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 hover-lift group">
           <div class="w-full aspect-video overflow-hidden">
             <img src="assets/warung-makan.png" alt="Landing Page Contoh" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
           </div>
           <div class="p-6">
-          <h3 class="font-semibold text-xl text-yellow-600 mb-2">Warung Makan Nusantara</h3>
+          <h3 class="font-semibold text-xl text-amber-600 mb-2">Warung Makan Nusantara</h3>
           <p class="text-gray-600 mb-4 text-sm">
             Landing page yang didesain khusus untuk menampilkan keunggulan Warung Makan Nusantara, 
             dengan fokus pada menu pilihan, galeri foto hidangan, serta kemudahan pelanggan dalam melakukan pemesanan.
           </p>
             <div class="flex justify-between items-center mt-4">
-              <span class="text-xs text-gray-500 font-medium bg-gray-100 px-3 py-1 rounded-full">Paket Ready</span>
-              <a href="https://web-warung-nusantara.netlify.app/" target="_blank" class="text-yellow-600 hover:text-yellow-800 transition-colors duration-200">
+              <span class="text-xs text-gray-500 font-medium bg-gray-100 px-3 py-1 rounded-full">Paket Basic</span>
+              <a href="https://paket-landing-page.netlify.app/" target="_blank" class="text-amber-600 hover:text-amber-800 transition-colors duration-200">
                 <i class="fas fa-external-link-alt"></i>
               </a>
             </div>
@@ -752,7 +754,7 @@ section { opacity: 1; visibility: visible; }
       </h2>
       <!-- Subtitle -->
       <p class="text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in-up delay-200">
-        Pilih paket website terbaik untuk UMKM Anda. 🎉 Promo spesial berlaku hingga <strong>10 Oktober 2025</strong>!
+        Pilih paket website terbaik untuk UMKM Anda. 🎉 Promo spesial hingga <strong>Akhir Oktober 2025</strong>!
       </p>
     </div>
 
@@ -764,7 +766,7 @@ section { opacity: 1; visibility: visible; }
           <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
             <i class="fas fa-rocket text-2xl text-yellow-600"></i>
           </div>
-          <h3 class="font-display text-2xl font-bold text-yellow-800 mb-2">Paket Ready</h3>
+          <h3 class="font-display text-2xl font-bold text-yellow-800 mb-2">Paket Basic</h3>
           <p class="text-gray-600 mb-6">Solusi cepat untuk bisnis yang baru merintis</p>
           <!-- Pricing -->
           <div class="mb-8">
@@ -783,13 +785,13 @@ section { opacity: 1; visibility: visible; }
           </ul>
           <button 
             class="view-examples w-full border-2 border-yellow-500 text-yellow-600 py-3 rounded-full font-semibold hover:bg-yellow-50 transition-all duration-300 mb-3" 
-            data-package="Ready">
+            data-package="Basic">
             <i class="fas fa-eye mr-2"></i>Lihat Contoh
           </button>
           <button 
             class="choose-package w-full bg-yellow-600 text-white py-3 rounded-full font-semibold hover:bg-yellow-700 transition-all duration-300 hover:scale-105" 
-            data-package="Ready">
-            Pilih Paket Ready
+            data-package="Basic">
+            Pilih Paket Basic
           </button>
         </div>
       </div>
@@ -803,13 +805,13 @@ section { opacity: 1; visibility: visible; }
           <div class="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-6">
             <i class="fas fa-star text-2xl text-white"></i>
           </div>
-          <h3 class="font-display text-2xl font-bold text-gray-800 mb-2">Paket Grow</h3>
+          <h3 class="font-display text-2xl font-bold text-yellow-800 mb-2">Paket Standard</h3>
           <p class="text-gray-600 mb-6">Ideal untuk bisnis yang ingin berkembang</p>
           <!-- Pricing -->
           <div class="mb-8">
-            <div class="text-gray-400 line-through text-lg mb-2">Rp 4.000.000</div>
-            <div class="text-4xl font-bold text-yellow-600 mb-2">Rp 3.000.000</div>
-            <div class="text-sm text-gray-600">Hemat Rp 1.000.000 dengan promo!</div>
+            <div class="text-gray-400 line-through text-lg mb-2">Rp 3.000.000</div>
+            <div class="text-4xl font-bold text-yellow-600 mb-2">Rp 2.500.000</div>
+            <div class="text-sm text-gray-600">Hemat Rp 500.000 dengan promo!</div>
           </div>
           <!-- Features -->
           <ul class="text-left space-y-3 mb-8">
@@ -818,18 +820,18 @@ section { opacity: 1; visibility: visible; }
             <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Desain Responsif Total</li>
             <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Optimasi Kecepatan & SEO Lanjutan</li>
             <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Integrasi Formulir Kontak & Maps</li>
-            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Estimasi selesai: 3-5 Hari Kerja</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Estimasi selesai: 5-7 Hari Kerja</li>
             <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i><strong>Free Support 30 Hari</strong></li>
           </ul>
           <button 
             class="view-examples w-full border-2 border-yellow-500 text-yellow-600 py-3 rounded-full font-semibold hover:bg-yellow-50 transition-all duration-300 mb-3" 
-            data-package="Grow">
+            data-package="Standard">
             <i class="fas fa-eye mr-2"></i>Lihat Contoh
           </button>
           <button 
             class="choose-package w-full bg-yellow-600 text-white py-3 rounded-full font-semibold hover:bg-yellow-700 transition-all duration-300 hover:scale-105" 
-            data-package="Grow">
-            Pilih Paket Grow
+            data-package="Standar">
+            Pilih Paket Standard
           </button>
         </div>
       </div>
@@ -843,8 +845,8 @@ section { opacity: 1; visibility: visible; }
           <p class="text-gray-600 mb-6">Solusi lengkap untuk mulai jualan online</p>
           <!-- Pricing -->
           <div class="mb-8">
-            <div class="text-gray-400 line-through text-lg mb-2">Rp 6.000.000</div>
-            <div class="text-4xl font-bold text-yellow-600 mb-2">Rp 5.000.000</div>
+            <div class="text-gray-400 line-through text-lg mb-2">Rp 3.000.000</div>
+            <div class="text-4xl font-bold text-yellow-600 mb-2">Rp 4.000.000</div>
             <div class="text-sm text-gray-600">Hemat Rp 1.000.000 dengan promo!</div>
           </div>
           <!-- Features -->
@@ -864,8 +866,8 @@ section { opacity: 1; visibility: visible; }
           </button>
           <button 
             class="choose-package w-full bg-yellow-600 text-white py-3 rounded-full font-semibold hover:bg-yellow-700 transition-all duration-300 hover:scale-105" 
-            data-package="E-Commerce">
-            Pilih Paket E-Commerce
+            data-package="Premium">
+            Pilih Paket Premium
           </button>
         </div>
       </div>
@@ -922,7 +924,7 @@ section { opacity: 1; visibility: visible; }
                 <div class="text-center md:text-left">
                     <h3 class="font-semibold text-xl text-gray-800 mb-2">Proses Pengerjaan & <em class="text-yellow-600">Review</em></h3>
                     <p class="text-gray-600">
-                        Tim kami mulai membangun website Anda. Setelah selesai, kami akan mengirimkan <strong>preview</strong> untuk Anda review. Anda bisa meminta revisi minor (<strong class="text-gray-800">maks. 2x</strong>) pada tahap ini.
+                        Tim kami mulai membangun website Anda. Setelah selesai, kami akan mengirimkan <strong>preview</strong> untuk Anda review. Anda bisa meminta revisi minor (<strong class="text-gray-800">maks. 3x</strong>) pada tahap ini.
                     </p>
                 </div>
             </div>
@@ -953,7 +955,7 @@ section { opacity: 1; visibility: visible; }
 </section>
 
  <!-- FAQ Section -->
-<section class="py-16 bg-gray-100">
+<section class="py-16 bg-gray-100 scroll-mt-4">
   <div class="container mx-auto px-4">
     <div class="text-center mb-12">
       <h2 class="font-display text-4xl font-bold text-yellow-800 mb-4">Pertanyaan Umum</h2>
@@ -972,7 +974,7 @@ section { opacity: 1; visibility: visible; }
         </button>
         <div class="faq-content hidden px-6 pb-6">
           <p class="text-gray-600">
-            Waktu pembuatan website tergantung pada paket yang Anda pilih dan seberapa cepat Anda memberikan materi. Untuk Paket Ready, kami menargetkan selesai dalam <strong>1-3 hari kerja.</strong> Paket Grow membutuhkan waktu sekitar <strong>3-5 hari kerja.</strong> dan Paket E-Commerce sekitar <strong>5-7 hari kerja,</strong> tergantung kompleksitas dan kelengkapan materi.
+            Waktu pembuatan website tergantung pada paket yang Anda pilih dan seberapa cepat Anda memberikan materi. Untuk Paket Basic, kami menargetkan selesai dalam <strong>1-3 hari kerja.</strong> Paket Standard membutuhkan waktu sekitar <strong>3-7 hari kerja.</strong> dan Paket Premium sekitar <strong>7-10 hari kerja,</strong> tergantung kompleksitas dan kelengkapan materi.
           </p>
         </div>
       </div>
@@ -986,7 +988,7 @@ section { opacity: 1; visibility: visible; }
         </button>
         <div class="faq-content hidden px-6 pb-6">
           <p class="text-gray-600">
-            Ya, tentu saja! Kami menyediakan <strong>maksimal 2 kali revisi minor</strong> untuk memastikan website sesuai dengan ekspektasi Anda. Revisi besar yang mengubah konsep awal akan dikenakan biaya tambahan. Kepuasan Anda adalah prioritas kami.
+            Ya, tentu saja! Kami menyediakan <strong>maksimal 3 kali revisi minor</strong> untuk memastikan website sesuai dengan ekspektasi Anda. Revisi besar yang mengubah konsep awal akan dikenakan biaya tambahan. Kepuasan Anda adalah prioritas kami.
           </p>
         </div>
       </div>
@@ -1183,7 +1185,7 @@ section { opacity: 1; visibility: visible; }
 
 <!-- Back to Top Button -->
 <button id="backToTop" class="fixed bottom-6 left-24 bg-yellow-600 text-white w-12 h-12 rounded-full shadow-lg hover:bg-yellow-700 transition-all duration-300 opacity-0 invisible hover:scale-110">
-  <i class="fas fa-arrow-up"></i>
+  <i class="fas fa-arrow-up stroke"></i>
 </button>
 
 <!-- Success Modal -->
