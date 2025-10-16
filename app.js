@@ -408,31 +408,20 @@ if (successModal) {
 // Make closeModal available globally
 window.closeModal = closeModal;
 
-// ============================================
-// 14. BACK TO TOP BUTTON
-// ============================================
-const backToTopBtn = document.getElementById('backToTop');
 
-function updateBackToTop() {
-  if (window.scrollY > 300) {
-    backToTopBtn?.classList.remove('invisible', 'opacity-0');
-    backToTopBtn?.classList.add('visible', 'opacity-100');
-  } else {
-    backToTopBtn?.classList.add('invisible', 'opacity-0');
-    backToTopBtn?.classList.remove('visible', 'opacity-100');
-  }
-}
+        // ================================
+        // 14. WA & BACK TO TOP
+        // ================================
+        const whatsappBtn = document.getElementById('whatsappBtn');
+        const backToTop = document.getElementById('backToTop');
 
-window.addEventListener('scroll', updateBackToTop);
+        window.addEventListener('scroll',()=>{
+            const y=window.scrollY;
+            if(whatsappBtn) whatsappBtn.style.right = y>500?'20px':'24px';
+            if(backToTop) backToTop.style.opacity = y>300?'1':'0';
+        });
 
-if (backToTopBtn) {
-  backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
-}
+        backToTop?.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
 // ============================================
 // 15. LAZY LOADING IMAGES

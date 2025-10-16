@@ -37,6 +37,7 @@
 <link rel="stylesheet" href="dist/output.css?v=2" />
 
 <style>
+/* 🌈 Root Theme Colors */
 :root {
   --primary: #2563eb;
   --secondary: #1e40af;
@@ -44,144 +45,103 @@
   --dark: #0f172a;
   --light: #f8fafc;
 }
-/* Animations */
+
+/* ✨ Basic Reset */
+html { scroll-behavior: smooth; }
+body { margin: 0; padding: 0; }
+
+/* ⚡ Optimized Gradient Background */
+.gradient-bg {
+  background: linear-gradient(-45deg, #6b4226, #c49a6c, #0f172a, #1e3a8a);
+  background-size: 200% 200%;
+  animation: gradientShift 10s ease-in-out infinite;
+}
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* 🌀 Smooth Animations (lightweight) */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
+  from { opacity: 0; transform: translateY(25px); }
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes fadeInLeft {
-  from { opacity: 0; transform: translateX(-30px); }
+  from { opacity: 0; transform: translateX(-25px); }
   to { opacity: 1; transform: translateX(0); }
 }
 @keyframes fadeInRight {
-  from { opacity: 0; transform: translateX(30px); }
+  from { opacity: 0; transform: translateX(25px); }
   to { opacity: 1; transform: translateX(0); }
 }
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-}
-@keyframes gradient {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
+  50% { transform: translateY(-10px); }
 }
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
 
-@keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Animations classes */
-.animate-fadeInUp { animation: fadeInUp 0.8s ease-out forwards; }
-.animate-fadeInLeft { animation: fadeInLeft 0.8s ease-out forwards; opacity: 1; }
-.animate-fadeInRight { animation: fadeInRight 0.8s ease-out forwards; opacity: 1; }
+/* 🚀 Animation Classes */
+.animate-fadeInUp { animation: fadeInUp 0.7s ease-out forwards; }
+.animate-fadeInLeft { animation: fadeInLeft 0.7s ease-out forwards; }
+.animate-fadeInRight { animation: fadeInRight 0.7s ease-out forwards; }
 .animate-float { animation: float 3s ease-in-out infinite; }
-.gradient-bg {
-  background: linear-gradient(-45deg, #6b4226, #c49a6c, #0f172a, #1e3a8a);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-}
 
-/* Navigation */
-nav.fixed {
-  background: #facc15; /* bg-yellow-400 */
-  backdrop-filter: none;
-  border: none;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
+/* 🧭 Navigation */
 nav {
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
-
-#preloader {
-  transition: opacity 0.5s ease;
-}
-
-nav.scrolled {
-  background: rgba(249, 212, 67, 0.9);
+nav.fixed, nav.scrolled {
+  background: rgba(250, 204, 21, 0.95); /* kuning solid transparan */
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  border: none;
 }
 
-/* Promo badge */
+/* 🎯 Promo Badge */
 .promo-badge {
   background: linear-gradient(135deg, #fbbf24, #f59e0b);
-  animation: promo-scale 2s infinite ease-in-out;
-  display: inline-block; /* penting biar transform scale rapi */
   border-radius: 9999px;
   padding: 0.5rem 1rem;
   font-weight: bold;
   color: white;
+  animation: badgePulse 2s ease-in-out infinite;
+}
+@keyframes badgePulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.5); }
+  50% { transform: scale(1.08); box-shadow: 0 0 10px 3px rgba(245, 158, 11, 0.3); }
 }
 
-/* Animasi scale + pulse */
-@keyframes promo-scale {
-  0%, 100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.6);
-  }
-  50% {
-    transform: scale(1.1);
-    box-shadow: 0 0 15px 5px rgba(245, 158, 11, 0.4);
-  }
-}
-
-
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.animate-fade-in-up {
-  animation: fadeInUp 0.8s ease-out forwards;
-}
-
-@keyframes pulseCustom {
-  0%, 100% {
-    transform: scale(1);
-    box-shadow: 0 0 15px rgba(255, 193, 7, 0.6);
-  }
-  50% {
-    transform: scale(1);
-    box-shadow: 0 0 30px rgba(233, 231, 230, 0.8);
-  }
-}
-.animate-pulse-custom {
-  animation: pulseCustom 2s infinite;
-}
-
-/* Hapus atau ganti class glass yang transparan */
+/* 🪞 Glass Variant (simplified, no blur) */
 .glass {
-  background: #facc15; /* Ganti dengan kuning solid */
-  backdrop-filter: none;
+  background: #facc15;
   border: 1px solid #eab308;
 }
 
-html { scroll-behavior: smooth; }
-.fade-in { opacity: 1; transform: translateY(0); transition: all 0.8s ease-out; }
-.fade-in.animate { opacity: 1; transform: translateY(0); }
-.hover-lift { transition: all 0.3s ease; }
-.hover-lift:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); }
-.hover-scale { transition: all 0.3s ease; }
-.hover-scale:hover { transform: scale(1.05); }
-.nav-link { position: relative; transition: all 0.3s ease; }
+/* 🎨 Hover Effects */
+.hover-lift {
+  transition: all 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* 🔗 Nav Links */
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
 .nav-link::after {
   content: '';
   position: absolute;
-  bottom: -5px;
+  bottom: -4px;
   left: 0;
   width: 0;
   height: 2px;
@@ -189,36 +149,65 @@ html { scroll-behavior: smooth; }
   transition: width 0.3s ease;
 }
 .nav-link:hover::after,
-.nav-link.active::after { width: 100%; }
-.mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
-.mobile-menu.active { transform: translateX(0); }
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* 📱 Mobile Menu */
+.mobile-menu {
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+.mobile-menu.active {
+  transform: translateX(0);
+}
+
+/* 💪 Skill Bar */
 .skill-bar { position: relative; overflow: hidden; }
 .skill-progress {
   height: 100%;
-  background: linear-gradient(90deg, #c49a6c,  #6b4226);
-  transition: width 1s ease-out;
+  background: linear-gradient(90deg, #c49a6c, #6b4226);
+  transition: width 0.8s ease-out;
 }
+
+/* 🧩 Buttons & Forms */
 .filter-btn { transition: all 0.3s ease; }
-.filter-btn.active { background: #c49a6c; color: white; transform: scale(1.05); }
-.form-input { transition: all 0.3s ease; }
-.form-input:focus { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15); }
+.filter-btn.active {
+  background: #c49a6c;
+  color: white;
+  transform: scale(1.05);
+}
+.form-input {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.form-input:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15);
+}
+
+/* 🔄 Loader */
 .loading {
-  display: inline-block;
   width: 20px;
   height: 20px;
-  border: 3px solid rgba(255, 255, 255, 0.3);
+  border: 3px solid rgba(255,255,255,0.3);
   border-radius: 50%;
   border-top-color: #fff;
-  animation: spin 1s ease-in-out infinite;
+  animation: spin 1s linear infinite;
 }
-section { opacity: 1; visibility: visible; }
-@media (max-width: 768px) {
-  .hero-title { font-size: 2.5rem; }
+
+/* 🧭 Scroll Progress */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 0%;
+  background: linear-gradient(90deg, #171716, #eab308);
+  transition: width 0.3s ease;
+  z-index: 9999;
 }
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #f1f5f9; }
-::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #c49a6c, #6b4226);border-radius: 4px;}
-/* Floating button styles */
+
+/* 💬 Floating WhatsApp Button */
 .floating-btn {
   position: fixed;
   bottom: 2rem;
@@ -228,49 +217,20 @@ section { opacity: 1; visibility: visible; }
   background-color: #25D366;
   color: white;
   font-weight: 600;
-  border-radius: 999px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 9999px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   text-decoration: none;
   font-size: 1rem;
-  display: inline-flex; /* Menggunakan inline-flex */
-  align-items: center; /* Meratakan item secara vertikal */
-  animation: float-btn 3s ease-in-out infinite;
+  display: inline-flex;
+  align-items: center;
+  animation: float 3s ease-in-out infinite;
   transition: all 0.3s ease;
 }
-
 .floating-btn:hover {
   transform: translateY(-5px) scale(1.05);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-
-}/* Typing effect */
-.typing-effect {
-  border-right: 2px solid #facc15;
-  animation: blink 1s infinite;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
 }
-
-@keyframes blink {
-  0%, 50% { border-color: transparent; }
-  51%, 100% { border-color: #facc15; }
-}
-
-/* Atur jarak antara SVG dan teks */
-.floating-btn svg {
-  margin-right: 8px;
-  /* vertical-align: middle; tidak diperlukan jika display: flex/inline-flex */
-}
-
-/* Floating animation */
-@keyframes float-btn {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
+.floating-btn svg { margin-right: 8px; }
 @media (max-width: 640px) {
   .floating-btn {
     bottom: 1rem;
@@ -279,16 +239,53 @@ section { opacity: 1; visibility: visible; }
     font-size: 0.875rem;
   }
 }
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 0%;
-  height: 4px;
-  background: linear-gradient(90deg, #171716, #eab308);
-  z-index: 9999;
-  transition: width 0.3s ease;
+
+/* 💫 Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #c49a6c, #6b4226);
+  border-radius: 4px;
 }
+
+/* 📱 Responsive Hero */
+@media (max-width: 768px) {
+  .hero-title { font-size: 2.5rem; }
+}
+
+
+        /* Floating WhatsApp button animations */
+        @keyframes float {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-6px);
+        }
+        }
+
+        @keyframes ping-slow {
+        0% {
+            transform: scale(1);
+            opacity: 0.6;
+        }
+
+        75%,
+        100% {
+            transform: scale(2.2);
+            opacity: 0;
+        }
+        }
+
+        .animate-float {
+        animation: float 1s ease-in-out infinite;
+        }
+
+        .after\:animate-ping-slow::after {
+        animation: ping-slow 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
 </style>
 </head>
 <body class="gradient-bg text-gray-800 font-sans">
@@ -331,7 +328,6 @@ section { opacity: 1; visibility: visible; }
     </div>
   </div>
 </nav>
-
 
 <!-- Hero Section -->
 <section id="home" class="min-h-screen gradient-bg pt-6 relative overflow-hidden md:py-24">
@@ -421,7 +417,7 @@ section { opacity: 1; visibility: visible; }
         <!-- Stats -->
         <div class="grid grid-cols-3 gap-6 mt-8">
           <div class="text-center">
-            <div class="text-3xl font-bold text-yellow-800 mb-2">3+</div>
+            <div class="text-3xl font-bold text-yellow-800 mb-2">5+</div>
             <div class="text-gray-600">Projects</div>
           </div>
           <div class="text-center">
@@ -451,7 +447,7 @@ section { opacity: 1; visibility: visible; }
           <!-- CMS -->
           <div>
             <div class="flex justify-between mb-2">
-              <span class="text-gray-700">CMS (Content Management)</span>
+              <span class="text-gray-700">Desain UI/UX Modern</span>
               <span class="text-gray-600">90%</span>
             </div>
             <div class="skill-bar w-full bg-gray-200 rounded-full h-3">
@@ -497,7 +493,7 @@ section { opacity: 1; visibility: visible; }
           <li><i class="fas fa-check text-yellow-500 mr-2"></i>Desain Modern & Responsif</li>
           <li><i class="fas fa-check text-yellow-500 mr-2"></i>Optimasi Kecepatan & SEO</li>
           <li><i class="fas fa-check text-yellow-500 mr-2"></i>Integrasi WhatsApp & Sosmed</li>
-          <li><i class="fas fa-check text-yellow-500 mr-2"></i>CMS (Untuk Paket Grow & E-Commerce)</li>
+          <li><i class="fas fa-check text-yellow-500 mr-2"></i>Integrasi Lokasi Google Maps</li>
         </ul>
       </div>
       <!-- Strategi Website & Desain -->
@@ -526,7 +522,7 @@ section { opacity: 1; visibility: visible; }
           Layanan dukungan teknis dan pemeliharaan untuk website Anda agar selalu optimal.
         </p>
         <ul class="text-gray-600 space-y-2">
-          <li><i class="fas fa-check text-yellow-500 mr-2"></i><strong>Free Support</strong> (Sesuai Paket)</li>
+          <li><i class="fas fa-check text-yellow-500 mr-2"></i><strong>Dukungan Teknis</strong> (Sesuai Paket)</li>
           <li><i class="fas fa-check text-yellow-500 mr-2"></i><strong>Paket Maintenance Berbayar</strong></li>
           <li><i class="fas fa-check text-yellow-500 mr-2"></i>Monitoring Keamanan</li>
           <li><i class="fas fa-check text-yellow-500 mr-2"></i>Backup Data Berkala</li>
@@ -754,7 +750,7 @@ section { opacity: 1; visibility: visible; }
       </h2>
       <!-- Subtitle -->
       <p class="text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in-up delay-200">
-        Pilih paket website terbaik untuk UMKM Anda. 🎉 Promo spesial hingga <strong>Akhir Oktober 2025</strong>!
+        Pilih paket website terbaik. <br>🎉 Promo spesial hingga <strong>Akhir Oktober 2025</strong>!
       </p>
     </div>
 
@@ -778,10 +774,10 @@ section { opacity: 1; visibility: visible; }
           <ul class="text-left space-y-3 mb-8">
             <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Landing Page 1 Halaman Kustom</li>
             <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Desain Responsif (Optimal di HP)</li>
-            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Optimasi Kecepatan & SEO Dasar</li>
-            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Integrasi Tombol WhatsApp & Sosmed</li>
-            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Estimasi selesai: 1-3 Hari Kerja</li>
-            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i><strong>Free Support 14 Hari</strong></li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Kontak lengkap (alamat, No WA, Email)</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Integrasi Peta Google Maps
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Gratis revisi minor 1x</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i><strong>Estimasi selesai: 1-3 Hari Kerja</strong></li>
           </ul>
           <button 
             class="view-examples w-full border-2 border-yellow-500 text-yellow-600 py-3 rounded-full font-semibold hover:bg-yellow-50 transition-all duration-300 mb-3" 
@@ -815,13 +811,13 @@ section { opacity: 1; visibility: visible; }
           </div>
           <!-- Features -->
           <ul class="text-left space-y-3 mb-8">
-            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Hingga 5 Halaman Website Kustom</li>
-            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i><strong>CMS Sederhana (Kelola Konten)</strong></li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Semua fitur di Paket Dasar</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Halaman Produk & Layanan</li>
             <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Desain Responsif Total</li>
-            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Optimasi Kecepatan & SEO Lanjutan</li>
-            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Integrasi Formulir Kontak & Maps</li>
-            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Estimasi selesai: 5-7 Hari Kerja</li>
-            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i><strong>Free Support 30 Hari</strong></li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Optimasi Kecepatan & SEO Dasar</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Tombol WA langsung ke admin penjualan</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Gratis revisi 3x</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i><strong>Estimasi selesai: 5-7 Hari Kerja</strong></li>
           </ul>
           <button 
             class="view-examples w-full border-2 border-yellow-500 text-yellow-600 py-3 rounded-full font-semibold hover:bg-yellow-50 transition-all duration-300 mb-3" 
@@ -841,7 +837,7 @@ section { opacity: 1; visibility: visible; }
           <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6">
             <i class="fas fa-crown text-2xl text-white"></i>
           </div>
-          <h3 class="font-display text-2xl font-bold text-yellow-800 mb-2">Paket E-Commerce</h3>
+          <h3 class="font-display text-2xl font-bold text-yellow-800 mb-2">Paket Premium</h3>
           <p class="text-gray-600 mb-6">Solusi lengkap untuk mulai jualan online</p>
           <!-- Pricing -->
           <div class="mb-8">
@@ -851,13 +847,14 @@ section { opacity: 1; visibility: visible; }
           </div>
           <!-- Features -->
           <ul class="text-left space-y-3 mb-8">
-            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Toko Online Fungsional (hingga 15 produk)</li>
-            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>CMS & Panel Admin (Kelola Produk & Stok)</li>
-            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Integrasi Pembayaran Dasar</li>
-            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Desain Kustom & Responsif Total</li>
-            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Optimasi Keamanan & SSL Dasar</li>
-            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Estimasi selesai: 5-7 Hari Kerja</li>
-            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i><strong>Free Support 60 Hari</strong></li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Semua fitur di Paket Standar</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Galeri foto & testimoni pelanggan</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Fitur promo/berita terbaru</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Desain Premium & Ekslusif</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Optimasi Kecepatan website</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Gratis revisi 3x</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i>Dukungan teknis 3 bulan</li>
+            <li class="flex items-center"><i class="fas fa-check text-yellow-500 mr-3"></i><strong>Estimasi selesai: 7-10 Hari Kerja</strong></li>
           </ul>
           <button 
             class="view-examples w-full border-2 border-yellow-500 text-yellow-600 py-3 rounded-full font-semibold hover:bg-yellow-50 transition-all duration-300 mb-3" 
@@ -1183,10 +1180,25 @@ section { opacity: 1; visibility: visible; }
   </div>
 </footer>
 
-<!-- Back to Top Button -->
-<button id="backToTop" class="fixed bottom-6 left-24 bg-yellow-600 text-white w-12 h-12 rounded-full shadow-lg hover:bg-yellow-700 transition-all duration-300 opacity-0 invisible hover:scale-110">
-  <i class="fas fa-arrow-up stroke"></i>
-</button>
+      <!-- Floating WhatsApp Button -->
+        <a id="whatsappBtn"
+            href="https://wa.me/62895413263355?text=Halo%20Firdaus,%20saya%20ingin%20konsultasi%20tentang%20pembuatan%20website%20untuk%20bisnis%20saya."
+            target="_blank" rel="noopener noreferrer"
+            class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-xl transition transform hover:scale-110 animate-float z-50 
+                    after:content-[''] after:absolute after:inset-0 after:rounded-full after:animate-ping-slow after:bg-green-400/30"
+            aria-label="Pesan via WhatsApp">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-7 h-7" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.52 3.48A11.88 11.88 0 0012 0C5.37 0 0 5.37 0 12c0 2.11.55 4.15 1.6 5.95L0 24l6.2-1.62A11.97 11.97 0 0012 24c6.63 0 12-5.37 12-12 0-3.19-1.24-6.2-3.48-8.52zM12 21.82c-1.93 0-3.82-.51-5.48-1.49l-.39-.23-3.69.96.99-3.6-.25-.41A9.82 9.82 0 012.18 12C2.18 6.6 6.6 2.18 12 2.18c2.62 0 5.08 1.02 6.93 2.87a9.79 9.79 0 012.89 6.95c0 5.4-4.42 9.82-9.82 9.82zm5.47-7.41c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.95 1.17-.17.2-.35.23-.65.08-.3-.15-1.26-.46-2.4-1.46-.89-.79-1.5-1.76-1.67-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.63-.93-2.22-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.53.08-.81.38s-1.06 1.03-1.06 2.5 1.08 2.9 1.23 3.1c.15.2 2.13 3.25 5.17 4.55.72.31 1.28.5 1.72.64.72.23 1.37.2 1.88.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.18-1.42-.08-.12-.28-.2-.58-.35z"/>
+            </svg>
+        </a>
+
+        <!-- Back to Top Button -->
+        <button id="backToTop"
+                class="fixed bottom-7 right-24 w-14 h-14 flex items-center justify-center rounded-full bg-amber-700 hover:bg-amber-800 text-white font-bold text-3xl shadow-lg transition-all duration-500 opacity-0 z-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+                </svg>
+        </button>
 
 <!-- Success Modal -->
 <div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 invisible opacity-0 transition-opacity duration-300">
@@ -1206,17 +1218,6 @@ section { opacity: 1; visibility: visible; }
 <div id="preloader" class="fixed inset-0 bg-white flex items-center justify-center z-50">
   <div class="loading"></div>
 </div>
-
-<!-- Floating WhatsApp Button -->
-<a href="https://wa.me/62895413263355?text=Halo%20saya%20tertarik%20mengenai%20website%20yang%20Anda%20tawarkan.%20Boleh%20dibantu%20jelaskan%20lebih%20lanjut%3F" 
-   target="_blank" 
-   class="floating-btn" 
-   aria-label="Chat WhatsApp">
-  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.028-.967-.271-.099-.468-.148-.666.15-.198.297-.767.967-.94 1.166-.173.198-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.447-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.666-1.611-.912-2.206-.242-.579-.487-.5-.666-.51-.173-.008-.372-.01-.571-.01-.198 0-.52.075-.792.372-.271.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.099 3.2 5.077 4.348.711.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.075-.124-.271-.198-.568-.347zm-5.421 7.617h-.001a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982 1-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.455 4.437-9.891 9.893-9.891 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.002 5.455-4.438 9.891-9.893 9.891zm8.413-18.306A11.815 11.815 0 0012.05 0C5.495 0 .05 5.445.048 12c0 2.123.555 4.199 1.607 6.032L0 24l6.118-1.637A11.93 11.93 0 0012.051 24c6.554 0 11.999-5.445 12-12a11.92 11.92 0 00-3.486-8.382z"/>
-  </svg>
-  Tanya via WA
-</a>
 
 <!-- Script -->
 <script src="app.js"></script>
