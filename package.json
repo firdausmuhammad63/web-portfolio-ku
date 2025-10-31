@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/package.json",
   "name": "web-portfolio",
   "version": "1.0.0",
   "description": "Portfolio Web Development dengan Tailwind CSS",
@@ -7,6 +8,7 @@
     "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
     "watch": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
   },
+  "prettier": {},
   "author": "Firdaus Muhammad",
   "license": "MIT",
   "devDependencies": {
