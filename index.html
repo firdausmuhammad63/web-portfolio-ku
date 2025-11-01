@@ -1,246 +1,296 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <!-- Title & SEO -->
-  <title>Firdaus • Web Developer</title>
-  <meta name="description" content="Jasa pembuatan website profesional untuk UMKM. Wujudkan website modern dan responsif yang bantu bisnis Anda tumbuh dan jangkau lebih banyak pelanggan." />
-  <meta name="keywords" content="Firdaus Muhammad, Web Developer, Portfolio, Firdauswebdev, firdauswebdev, firdausweb, firdausdev, Freelancer" />
-  <meta name="author" content="Firdaus Muhammad" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Favicon -->
-  <link rel="icon" href="assets/F-1.png" type="image/png" />
+    <!-- Title & SEO -->
+    <title>Firdaus • Web Developer</title>
+    <meta
+      name="description"
+      content="Jasa pembuatan website profesional untuk UMKM. Wujudkan website modern dan responsif yang bantu bisnis Anda tumbuh dan jangkau lebih banyak pelanggan."
+    />
+    <meta
+      name="keywords"
+      content="Firdaus Muhammad, Web Developer, Portfolio, Firdauswebdev, firdauswebdev, firdausweb, firdausdev, Freelancer"
+    />
+    <meta name="author" content="Firdaus Muhammad" />
 
-  <!-- Open Graph / Social Preview -->
-  <meta property="og:title" content="Firdaus - Web Developer" />
-  <meta property="og:description" content="Jasa pembuatan website profesional untuk UMKM. Wujudkan website modern dan responsif yang bantu bisnis Anda tumbuh dan jangkau lebih banyak pelanggan." />
-  <meta property="og:image" content="https://webdevfirdaus.netlify.app/assets/F-3.png" />
-  <meta property="og:url" content="https://webdevfirdaus.netlify.app/" />
-  <meta property="og:type" content="website" />
+    <!-- Favicon -->
+    <link rel="icon" href="assets/F-1.png" type="image/png" />
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Firdaus - Web Developer" />
-  <meta name="twitter:description" content="Jasa pembuatan website profesional untuk UMKM. Wujudkan website modern dan responsif yang bantu bisnis Anda tumbuh dan jangkau lebih banyak pelanggan." />
-  <meta name="twitter:image" content="https://webdevfirdaus.netlify.app/assets/F-3.png" />
+    <!-- Open Graph / Social Preview -->
+    <meta property="og:title" content="Firdaus - Web Developer" />
+    <meta
+      property="og:description"
+      content="Jasa pembuatan website profesional untuk UMKM. Wujudkan website modern dan responsif yang bantu bisnis Anda tumbuh dan jangkau lebih banyak pelanggan."
+    />
+    <meta
+      property="og:image"
+      content="https://webdevfirdaus.netlify.app/assets/F-3.png"
+    />
+    <meta property="og:url" content="https://webdevfirdaus.netlify.app/" />
+    <meta property="og:type" content="website" />
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Firdaus - Web Developer" />
+    <meta
+      name="twitter:description"
+      content="Jasa pembuatan website profesional untuk UMKM. Wujudkan website modern dan responsif yang bantu bisnis Anda tumbuh dan jangkau lebih banyak pelanggan."
+    />
+    <meta
+      name="twitter:image"
+      content="https://webdevfirdaus.netlify.app/assets/F-3.png"
+    />
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Tailwind CSS -->
-  <link rel="stylesheet" href="dist/output.css?v=2" />
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
-  <style>
-    /* Modern Preloader */
-    .preloader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
-    }
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="dist/output.css?v=2" />
 
-    .preloader.hide {
-      opacity: 0;
-      visibility: hidden;
-    }
+    <style>
+      /* Modern Preloader */
+      .preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+      }
 
-    .loader {
-      position: relative;
-      width: 60px;
-      height: 60px;
-    }
-
-    .loader-circle {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border: 3px solid transparent;
-      border-top-color: #fff;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-
-    .loader-circle:nth-child(2) {
-      width: 80%;
-      height: 80%;
-      top: 10%;
-      left: 10%;
-      border-top-color: rgba(255, 255, 255, 0.7);
-      animation: spin 0.8s linear reverse infinite;
-    }
-
-    .loader-circle:nth-child(3) {
-      width: 60%;
-      height: 60%;
-      top: 20%;
-      left: 20%;
-      border-top-color: rgba(255, 255, 255, 0.4);
-      animation: spin 0.6s linear infinite;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    /* Root Theme Colors */
-    :root {
-      --primary: #6366f1;
-      --secondary: #8b5cf6;
-      --accent: #f59e0b;
-      --dark: #1e293b;
-      --light: #f8fafc;
-    }
-
-    /* Clean Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      line-height: 1.6;
-      color: #334155;
-      overflow-x: hidden;
-    } 
-
-
-    /* Modern Gradient Background */
-    .gradient-bg {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .gradient-bg::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                  radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-      animation: float 20s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      33% { transform: translate(30px, -30px) rotate(120deg); }
-      66% { transform: translate(-20px, 20px) rotate(240deg); }
-    }
-
-    /* Smooth Animations */
-    @keyframes fadeInUp {
-      from {
+      .preloader.hide {
         opacity: 0;
-        transform: translateY(30px);
+        visibility: hidden;
       }
-      to {
-        opacity: 1;
-        transform: translateY(0);
+
+      .loader {
+        position: relative;
+        width: 60px;
+        height: 60px;
       }
-    }
 
-    .animate-fadeInUp {
-      animation: fadeInUp 0.8s ease-out forwards;
-    }
+      .loader-circle {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 3px solid transparent;
+        border-top-color: #fff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
 
-    /* Navigation */
-    nav {
-      backdrop-filter: blur(10px);
-      background: rgba(255, 255, 255, 0.95);
-      transition: all 0.3s ease;
-    }
+      .loader-circle:nth-child(2) {
+        width: 80%;
+        height: 80%;
+        top: 10%;
+        left: 10%;
+        border-top-color: rgba(255, 255, 255, 0.7);
+        animation: spin 0.8s linear reverse infinite;
+      }
 
-    nav.scrolled {
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    }
+      .loader-circle:nth-child(3) {
+        width: 60%;
+        height: 60%;
+        top: 20%;
+        left: 20%;
+        border-top-color: rgba(255, 255, 255, 0.4);
+        animation: spin 0.6s linear infinite;
+      }
 
-    /* Simple Buttons */
-    .btn-primary {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
 
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
-    }
+      /* Root Theme Colors */
+      :root {
+        --primary: #6366f1;
+        --secondary: #8b5cf6;
+        --accent: #f59e0b;
+        --dark: #1e293b;
+        --light: #f8fafc;
+      }
 
-    /* Transparent Portfolio Button */
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.1);
-      color: #ffffff;
-      padding: 12px 24px;
-      border: 2px solid rgba(255, 255, 255, 0.4);
-      border-radius: 10px;
-      font-weight: 600;
-      transition: all 0.35s ease;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      backdrop-filter: blur(8px);
-    }
+      /* Clean Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    .btn-secondary:hover {
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.8), rgba(118, 75, 162, 0.8));
-      border-color: transparent;
-      color: #ffffff;
-      box-shadow: 0 8px 20px rgba(118, 75, 162, 0.3);
-      transform: translateY(-2px) scale(1.02);
-    }
+      body {
+        font-family: "Inter", sans-serif;
+        line-height: 1.6;
+        color: #334155;
+        overflow-x: hidden;
+      }
 
-    /* Variant for light backgrounds */
-    .btn-secondary.light {
-      background: rgba(99, 102, 241, 0.08);
-      color: #4f46e5;
-      border: 2px solid rgba(99, 102, 241, 0.3);
-      backdrop-filter: none;
-    }
+      /* Modern Gradient Background */
+      .gradient-bg {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        position: relative;
+        overflow: hidden;
+      }
 
-    .btn-secondary.light:hover {
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: #fff;
-      border-color: transparent;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(118, 75, 162, 0.2);
-    }
+      .gradient-bg::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+            circle at 20% 50%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 80%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 50%
+          );
+        animation: float 20s ease-in-out infinite;
+      }
 
-    .btn-secondary:hover {
-      animation: pulse-glow 1.5s ease-in-out infinite alternate;
-    }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        33% {
+          transform: translate(30px, -30px) rotate(120deg);
+        }
+        66% {
+          transform: translate(-20px, 20px) rotate(240deg);
+        }
+      }
 
-    @keyframes pulse-glow {
-      from { box-shadow: 0 0 10px rgba(118, 75, 162, 0.4); }
-      to { box-shadow: 0 0 25px rgba(118, 75, 162, 0.7); }
-    }
+      /* Smooth Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-        /* Floating WhatsApp button animations */
-        /* @keyframes float {
+      .animate-fadeInUp {
+        animation: fadeInUp 0.8s ease-out forwards;
+      }
+
+      /* Navigation */
+      nav {
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.95);
+        transition: all 0.3s ease;
+      }
+
+      nav.scrolled {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Simple Buttons */
+      .btn-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+      }
+
+      /* Transparent Portfolio Button */
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+        padding: 12px 24px;
+        border: 2px solid rgba(255, 255, 255, 0.4);
+        border-radius: 10px;
+        font-weight: 600;
+        transition: all 0.35s ease;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        backdrop-filter: blur(8px);
+      }
+
+      .btn-secondary:hover {
+        background: linear-gradient(
+          135deg,
+          rgba(99, 102, 241, 0.8),
+          rgba(118, 75, 162, 0.8)
+        );
+        border-color: transparent;
+        color: #ffffff;
+        box-shadow: 0 8px 20px rgba(118, 75, 162, 0.3);
+        transform: translateY(-2px) scale(1.02);
+      }
+
+      /* Variant for light backgrounds */
+      .btn-secondary.light {
+        background: rgba(99, 102, 241, 0.08);
+        color: #4f46e5;
+        border: 2px solid rgba(99, 102, 241, 0.3);
+        backdrop-filter: none;
+      }
+
+      .btn-secondary.light:hover {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: #fff;
+        border-color: transparent;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(118, 75, 162, 0.2);
+      }
+
+      .btn-secondary:hover {
+        animation: pulse-glow 1.5s ease-in-out infinite alternate;
+      }
+
+      @keyframes pulse-glow {
+        from {
+          box-shadow: 0 0 10px rgba(118, 75, 162, 0.4);
+        }
+        to {
+          box-shadow: 0 0 25px rgba(118, 75, 162, 0.7);
+        }
+      }
+
+      /* Floating WhatsApp button animations */
+      /* @keyframes float {
         0%,
         100% {
             transform: translateY(0);
@@ -251,7 +301,7 @@
         }
         } */
 
-        /* @keyframes ping-slow {
+      /* @keyframes ping-slow {
         0% {
             transform: scale(1);
             opacity: 0.6;
@@ -264,371 +314,511 @@
         }
         } */
 
-        /* .animate-float {
+      /* .animate-float {
         animation: float 1s ease-in-out infinite;
         }
 
         .after\:animate-ping-slow::after {
         animation: ping-slow 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
         } */
-      
-    /* Pricing Cards */
-    .pricing-card {
-      background: white;
-      border-radius: 16px;
-      padding: 32px;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
 
-    .pricing-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    }
-
-    .pricing-card.featured {
-      border: 2px solid #6366f1;
-      transform: scale(1.05);
-    }
-
-    .pricing-card.featured::before {
-      content: 'POPULER';
-      position: absolute;
-      top: 20px;
-      right: -30px;
-      background: #f59e0b;
-      color: white;
-      padding: 4px 40px;
-      font-size: 12px;
-      font-weight: bold;
-      transform: rotate(45deg);
-    }
-
-    /* Clean List Styles */
-    .feature-list {
-      list-style: none;
-      padding: 0;
-    }
-
-    .feature-list li {
-      padding: 8px 0;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .feature-list li i {
-      color: #10b981;
-      font-size: 16px;
-    }
-
-
-    /* Mobile Menu */
-    .mobile-menu {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 280px;
-      height: 100vh;
-      background: white;
-      box-shadow: -4px 0 6px -1px rgba(0, 0, 0, 0.1);
-      transition: right 0.3s ease;
-      z-index: 1000;
-    }
-
-    .mobile-menu.active {
-      right: 0;
-    }
-
-    /* Fade in elements */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s ease;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .pricing-card.featured {
-        transform: scale(1);
+      /* Pricing Cards */
+      .pricing-card {
+        background: white;
+        border-radius: 16px;
+        padding: 32px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
       }
-    }
 
-    /* Simple Scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
+      .pricing-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      }
 
-    ::-webkit-scrollbar-track {
-      background: #f1f5f9;
-    }
+      .pricing-card.featured {
+        border: 2px solid #6366f1;
+        transform: scale(1.05);
+      }
 
-    ::-webkit-scrollbar-thumb {
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      border-radius: 4px;
-    } 
-  </style>
-<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
-</head>
-<body>
-  <!-- Modern Preloader -->
-  <div class="preloader" id="preloader">
-    <div class="loader">
-      <div class="loader-circle"></div>
-      <div class="loader-circle"></div>
-      <div class="loader-circle"></div>
-    </div>
-  </div>
+      .pricing-card.featured::before {
+        content: "POPULER";
+        position: absolute;
+        top: 20px;
+        right: -30px;
+        background: #f59e0b;
+        color: white;
+        padding: 4px 40px;
+        font-size: 12px;
+        font-weight: bold;
+        transform: rotate(45deg);
+      }
 
-  <!-- Navigation -->
-  <nav class="fixed top-0 w-full z-50 px-4 py-4" id="navbar">
-    <div class="container mx-auto flex justify-between items-center">
-      <!-- Logo -->
-      <div class="text-2xl font-bold text-gray-800">
-        Firdaus<span class="text-purple-600">.WebDev</span>
+      /* Clean List Styles */
+      .feature-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .feature-list li {
+        padding: 8px 0;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .feature-list li i {
+        color: #10b981;
+        font-size: 16px;
+      }
+
+      /* Mobile Menu */
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: white;
+        box-shadow: -4px 0 6px -1px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease;
+        z-index: 1000;
+      }
+
+      .mobile-menu.active {
+        right: 0;
+      }
+
+      /* Fade in elements */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .pricing-card.featured {
+          transform: scale(1);
+        }
+      }
+
+      /* Simple Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        border-radius: 4px;
+      }
+    </style>
+    <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+  </head>
+  <body>
+    <!-- Modern Preloader -->
+    <div class="preloader" id="preloader">
+      <div class="loader">
+        <div class="loader-circle"></div>
+        <div class="loader-circle"></div>
+        <div class="loader-circle"></div>
       </div>
-
-      <!-- Desktop Menu -->
-      <div class="hidden md:flex items-center gap-8">
-        <a href="#home" class="text-gray-600 hover:text-purple-600 transition-colors">Beranda</a>
-        <a href="#pricing" class="text-gray-600 hover:text-purple-600 transition-colors">Harga</a>
-        <a href="#portfolio" class="text-gray-600 hover:text-purple-600 transition-colors">Portfolio</a>
-        <a href="#contact" class="text-gray-600 hover:text-purple-600 transition-colors">Kontak</a>
-        <a 
-          href="https://wa.me/62895413263355?text=Halo%20Firdaus%2C%20saya%20tertarik%20dengan%20jasa%20web%20Anda" 
-          target="_blank" 
-          class="btn-primary w-full justify-center"
-        >
-          <i class="fab fa-whatsapp"></i>
-          WhatsApp
-        </a>
-      </div>
-
-      <!-- Mobile Menu Button -->
-      <button class="md:hidden text-gray-600" id="mobile-menu-btn">
-        <i class="fas fa-bars text-xl"></i>
-      </button>
     </div>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobile-menu">
-      <div class="p-6">
-        <button class="text-gray-600 mb-8" id="close-menu">
-          <i class="fas fa-times text-xl"></i>
-        </button>
-        <div class="flex flex-col gap-4">
-          <a href="#home" class="text-gray-600 hover:text-purple-600 transition-colors">Beranda</a>
-          <a href="#pricing" class="text-gray-600 hover:text-purple-600 transition-colors">Harga</a>
-          <a href="#portfolio" class="text-gray-600 hover:text-purple-600 transition-colors">Portfolio</a>
-          <a href="#contact" class="text-gray-600 hover:text-purple-600 transition-colors">Kontak</a>
-          <a 
-            href="https://wa.me/62895413263355?text=Halo%20Firdaus%2C%20saya%20tertarik%20dengan%20jasa%20web%20Anda" 
-            target="_blank" 
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 px-4 py-4" id="navbar">
+      <div class="container mx-auto flex justify-between items-center">
+        <!-- Logo -->
+        <div class="text-2xl font-bold text-gray-800">
+          Firdaus<span class="text-purple-600">.WebDev</span>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center gap-8">
+          <a
+            href="#home"
+            class="text-gray-600 hover:text-purple-600 transition-colors"
+            >Beranda</a
+          >
+          <a
+            href="#pricing"
+            class="text-gray-600 hover:text-purple-600 transition-colors"
+            >Harga</a
+          >
+          <a
+            href="#portfolio"
+            class="text-gray-600 hover:text-purple-600 transition-colors"
+            >Portfolio</a
+          >
+          <a
+            href="#contact"
+            class="text-gray-600 hover:text-purple-600 transition-colors"
+            >Kontak</a
+          >
+          <a
+            href="https://wa.me/62895413263355?text=Halo%20Firdaus%2C%20saya%20tertarik%20dengan%20jasa%20web%20Anda"
+            target="_blank"
             class="btn-primary w-full justify-center"
           >
             <i class="fab fa-whatsapp"></i>
             WhatsApp
           </a>
         </div>
-      </div>
-    </div>
-  </nav>
 
-  <!-- Hero Section -->
-  <section id="home" class="gradient-bg min-h-screen flex items-center pt-16 md:pt-24">
-    <div class="container mx-auto px-4">
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-        <!-- Content -->
-        <div class="text-white">
-          <div class="animate-fadeInUp">
-            <p class="text-lg mb-4 opacity-90">Assalamu'alaikum, saya</p>
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">
-              Firdaus Muhammad
-            </h1>
-            <h2 class="text-xl font-serif font-medium md:text-2xl mb-6 opacity-90">Front-end Web Developer</h2>
-            <p class="text-lg opacity-90 mb-2 leading-relaxed">
-              Bantu UMKM naik kelas lewat <b>website modern & profesional</b> untuk tingkatkan kepercayaan & penjualan.
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden text-gray-600" id="mobile-menu-btn">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div class="mobile-menu" id="mobile-menu">
+        <div class="p-6">
+          <button class="text-gray-600 mb-8" id="close-menu">
+            <i class="fas fa-times text-xl"></i>
+          </button>
+          <div class="flex flex-col gap-4">
+            <a
+              href="#home"
+              class="text-gray-600 hover:text-purple-600 transition-colors"
+              >Beranda</a
+            >
+            <a
+              href="#pricing"
+              class="text-gray-600 hover:text-purple-600 transition-colors"
+              >Harga</a
+            >
+            <a
+              href="#portfolio"
+              class="text-gray-600 hover:text-purple-600 transition-colors"
+              >Portfolio</a
+            >
+            <a
+              href="#contact"
+              class="text-gray-600 hover:text-purple-600 transition-colors"
+              >Kontak</a
+            >
+            <a
+              href="https://wa.me/62895413263355?text=Halo%20Firdaus%2C%20saya%20tertarik%20dengan%20jasa%20web%20Anda"
+              target="_blank"
+              class="btn-primary w-full justify-center"
+            >
+              <i class="fab fa-whatsapp"></i>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="gradient-bg min-h-screen flex items-center pt-16 md:pt-24"
+    >
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- Content -->
+          <div class="text-white">
+            <div class="animate-fadeInUp">
+              <p class="text-lg mb-4 opacity-90">Assalamu'alaikum, saya</p>
+              <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                Firdaus Muhammad
+              </h1>
+              <h2
+                class="text-xl font-serif font-medium md:text-2xl mb-6 opacity-90"
+              >
+                Front-end Web Developer
+              </h2>
+              <p class="text-lg opacity-90 mb-2 leading-relaxed">
+                Bantu UMKM naik kelas lewat
+                <b>website modern & profesional</b> untuk tingkatkan kepercayaan
+                & penjualan.
+              </p>
+            </div>
+          </div>
+
+          <!-- Profile -->
+          <div class="flex justify-center -mt-7 md:mt-0">
+            <div class="text-center animate-fadeInUp">
+              <div
+                class="w-48 h-48 mx-auto bg-white/10 rounded-full flex items-center justify-center mb-6 overflow-hidden"
+              >
+                <img
+                  src="assets/my photo.jpeg"
+                  alt="Profile"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="flex justify-center gap-4">
+                <a
+                  href="https://github.com/firdausmuhammad63"
+                  class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-purple-600 transition-all"
+                >
+                  <i class="fab fa-github"></i>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/firdaus-muhammad-bin-sulaiman-478201225"
+                  class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-purple-600 transition-all"
+                >
+                  <i class="fab fa-linkedin"></i>
+                </a>
+                <a
+                  href="https://instagram.com/firdaus.webdev"
+                  target="_blank"
+                  class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-pink-600 transition-all"
+                >
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Pricing Section - Refined & Emotional -->
+    <section id="pricing" class="py-20 bg-gradient-to-b from-gray-50 to-white">
+      <div class="container mx-auto px-4">
+        <!-- Header -->
+        <div class="text-center mb-14 fade-in">
+          <h2 class="text-4xl font-bold text-gray-800 mb-3">
+            Paket Website Profesional
+          </h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            Bangun website modern, cepat, dan berkelas — bersama pengembang yang
+            sedang berikhtiar menuju hari bahagia.
+          </p>
+        </div>
+
+        <!-- Emotional Banner -->
+        <div class="max-w-4xl mx-auto mb-12">
+          <div
+            class="bg-gradient-to-r from-purple-700 via-pink-500 to-yellow-400 text-white p-6 rounded-2xl shadow-lg text-center animate-pulse-slow"
+          >
+            <p class="text-xl font-semibold">
+              🌅
+              <span class="italic font-light"
+                >“7 Hari Ikhtiar Menuju Hari Bahagia”</span
+              >
+            </p>
+            <p class="mt-2 text-lg font-medium">
+              Setiap pesanan website adalah bagian dari doa dan perjuangan
+              menuju akad.
+            </p>
+            <p class="mt-1 text-sm opacity-90">
+              💫 Dukung perjalanan ini dengan memilih paket terbaik — cepat,
+              berkualitas, dan penuh makna.
             </p>
           </div>
         </div>
 
-        <!-- Profile -->
-        <div class="flex justify-center -mt-7 md:mt-0">
-          <div class="text-center animate-fadeInUp">
-            <div class="w-48 h-48 mx-auto bg-white/10 rounded-full flex items-center justify-center mb-6 overflow-hidden">
-              <img src="assets/my photo.jpeg" alt="Profile" class="w-full h-full object-cover" />
+        <!-- Pricing Cards -->
+        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <!-- Basic -->
+          <div
+            class="pricing-card fade-in hover:-translate-y-1 transition-transform"
+          >
+            <div class="text-center mb-6">
+              <div
+                class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4"
+              >
+                <i class="fas fa-rocket text-2xl text-blue-600"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-800 mb-2">Basic</h3>
+              <p class="text-gray-600">
+                Untuk bisnis kecil yang ingin tampil profesional dengan cepat.
+              </p>
             </div>
-            <div class="flex justify-center gap-4">
-              <a href="https://github.com/firdausmuhammad63" class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-purple-600 transition-all">
-                <i class="fab fa-github"></i>
-              </a>
-              <a href="https://www.linkedin.com/in/firdaus-muhammad-bin-sulaiman-478201225" class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-purple-600 transition-all">
-                <i class="fab fa-linkedin"></i>
-              </a>
-              <a href="https://instagram.com/firdaus.webdev" target="_blank"
-                class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-pink-600 transition-all">
-                <i class="fab fa-instagram"></i>
-              </a>
+
+            <div class="text-center mb-6">
+              <div class="text-4xl font-bold text-purple-600 mb-2">
+                Rp 5.000.000
+              </div>
             </div>
+
+            <ul class="feature-list mb-8 text-gray-700 space-y-1">
+              <li>
+                <i class="fas fa-check text-green-500"></i> Landing page dinamis
+                & responsif
+              </li>
+              <li>
+                <i class="fas fa-check text-green-500"></i>
+                <strong>Pengerjaan 1 hari</strong>
+              </li>
+              <li>
+                <i class="fas fa-check text-green-500"></i> Konten AI opsional
+              </li>
+              <li>
+                <i class="fas fa-check text-green-500"></i> CTA kuat (WA,
+                Telepon)
+              </li>
+              <li>
+                <i class="fas fa-check text-green-500"></i> 1x revisi ringan
+              </li>
+            </ul>
+
+            <button
+              class="btn-primary w-full justify-center"
+              onclick="selectPackage('Basic')"
+            >
+              <i class="fas fa-shopping-cart"></i> Pilih Basic
+            </button>
+          </div>
+
+          <!-- Standard -->
+          <div
+            class="pricing-card fade-in hover:-translate-y-1 transition-transform border-t-4 border-purple-400 rounded-xl"
+          >
+            <div class="text-center mb-6">
+              <div
+                class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4"
+              >
+                <i class="fas fa-star text-2xl text-purple-600"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-800 mb-2">Standard</h3>
+              <p class="text-gray-600">
+                Pilihan terbaik untuk personal branding dan usaha berkembang.
+              </p>
+            </div>
+
+            <div class="text-center mb-6">
+              <div class="text-4xl font-bold text-purple-600 mb-2">
+                Rp 7.500.000
+              </div>
+            </div>
+
+            <ul class="feature-list mb-8 text-gray-700 space-y-1">
+              <li>
+                <i class="fas fa-check text-green-500"></i> Semua fitur Basic
+              </li>
+              <li>
+                <i class="fas fa-check text-green-500"></i> Company Profile /
+                Portofolio
+              </li>
+              <li>
+                <i class="fas fa-check text-green-500"></i> Optimasi SEO Dasar
+              </li>
+              <li>
+                <i class="fas fa-check text-green-500"></i> Desain eksklusif &
+                elegan
+              </li>
+              <li><i class="fas fa-check text-green-500"></i> 2x revisi</li>
+              <li>
+                <i class="fas fa-check text-green-500"></i> Pengerjaan 1–2 hari
+              </li>
+            </ul>
+
+            <button
+              class="btn-primary w-full justify-center"
+              onclick="selectPackage('Standard')"
+            >
+              <i class="fas fa-shopping-cart"></i> Pilih Standard
+            </button>
+          </div>
+
+          <!-- Premium -->
+          <div
+            class="pricing-card fade-in hover:-translate-y-1 transition-transform"
+          >
+            <div class="text-center mb-6">
+              <div
+                class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4"
+              >
+                <i class="fas fa-crown text-2xl text-yellow-600"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-800 mb-2">Premium</h3>
+              <p class="text-gray-600">
+                Solusi total dengan hasil maksimal & dukungan penuh.
+              </p>
+            </div>
+
+            <div class="text-center mb-6">
+              <div class="text-4xl font-bold text-yellow-600 mb-2">
+                Rp 10.000.000
+              </div>
+            </div>
+
+            <ul class="feature-list mb-8 text-gray-700 space-y-1">
+              <li>
+                <i class="fas fa-check text-green-500"></i> Semua fitur Standard
+              </li>
+              <li>
+                <i class="fas fa-check text-green-500"></i> E-commerce mini /
+                website kompleks
+              </li>
+              <li>
+                <i class="fas fa-check text-green-500"></i> Full Support AI
+                (konten & fitur)
+              </li>
+              <li><i class="fas fa-check text-green-500"></i> 3x revisi</li>
+              <li>
+                <i class="fas fa-check text-green-500"></i> Pengerjaan 2–3 hari
+              </li>
+              <li>
+                <i class="fas fa-check text-green-500"></i> Dukungan teknis 3
+                bulan
+              </li>
+            </ul>
+
+            <button
+              class="btn-primary w-full justify-center"
+              onclick="selectPackage('Premium')"
+            >
+              <i class="fas fa-shopping-cart"></i> Pilih Premium
+            </button>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Main Pricing Section - FOCUSED -->
-  <section id="pricing" class="py-20 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <!-- Header -->
-      <div class="text-center mb-16 fade-in">
-        <h2 class="text-4xl font-bold text-gray-800 mb-4">Paket Harga Website</h2>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-          Solusi website modern & profesional untuk Bisnis Anda
-        </p>
-      </div>
-
-      <!-- Pricing Cards -->
-      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        <!-- Bio Package -->
-<div class="pricing-card fade-in">
-  <div class="text-center mb-6">
-    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-      <i class="fas fa-id-card text-2xl text-green-600"></i>
-    </div>
-    <h3 class="text-2xl font-bold text-gray-800 mb-2">Bio</h3>
-    <p class="text-gray-600">Cocok untuk UMKM & personal branding</p>
-  </div>
-
-  <div class="text-center mb-6">
-    <div class="text-4xl font-bold text-green-600 mb-2">Free</div>
-  </div>
-
-  <ul class="feature-list mb-8">
-    <li><i class="fas fa-check"></i>Desain simpel & elegan</li>
-    <li><i class="fas fa-check"></i>1 halaman profil (Bio Link)</li>
-    <li><i class="fas fa-check"></i>Tautan ke WhatsApp, Shopee, IG, dll</li>
-    <li><i class="fas fa-check"></i>Desain responsif (HP & PC)</li>
-    <li><i class="fas fa-check"></i>1x revisi ringan</li>
-    <li><i class="fas fa-check"></i>Pengerjaan 1 hari</li>
-  </ul>
-
-  <button class="btn-primary w-full justify-center" onclick="selectPackage('Bio')">
-    <i class="fas fa-shopping-cart"></i>
-    Pilih Bio
-  </button>
-</div>
-
-        <!-- Basic Package -->
-        <div class="pricing-card fade-in">
-          <div class="text-center mb-6">
-            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <i class="fas fa-rocket text-2xl text-blue-600"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-gray-800 mb-2">Basic</h3>
-            <p class="text-gray-600">Untuk bisnis yang baru mulai</p>
-          </div>
-
-          <div class="text-center mb-6">
-            <div class="text-4xl font-bold text-purple-600 mb-2">Rp 1.500.000</div>
-            <div class="text-sm text-gray-500">Dari <span class="line-through">Rp 2.000.000</span></div>
-          </div>
-
-          <ul class="feature-list mb-8">
-            <li><i class="fas fa-check"></i>Landing Page 1 Halaman</li>
-            <li><i class="fas fa-check"></i>Desain Responsif</li>
-            <li><i class="fas fa-check"></i>Informasi Kontak</li>
-            <li><i class="fas fa-check"></i>Google Maps</li>
-            <li><i class="fas fa-check"></i>Revisi 1x</li>
-            <li><i class="fas fa-check"></i>1-3 hari pengerjaan</li>
-          </ul>
-
-          <button class="btn-primary w-full justify-center" onclick="selectPackage('Basic')">
-            <i class="fas fa-shopping-cart"></i>
-            Pilih Basic
-          </button>
-        </div>
-
-        <!-- Standard Package - Featured -->
-        <div class="pricing-card featured fade-in">
-          <div class="text-center mb-6">
-            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <i class="fas fa-star text-2xl text-purple-600"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-gray-800 mb-2">Standard</h3>
-            <p class="text-gray-600">Paling populer untuk bisnis</p>
-          </div>
-
-          <div class="text-center mb-6">
-            <div class="text-4xl font-bold text-purple-600 mb-2">Rp 2.500.000</div>
-            <div class="text-sm text-gray-500">Dari <span class="line-through">Rp 3.000.000</span></div>
-          </div>
-
-          <ul class="feature-list mb-8">
-            <li><i class="fas fa-check"></i>Semua fitur Basic</li>
-            <li><i class="fas fa-check"></i>Halaman Produk/Layanan</li>
-            <li><i class="fas fa-check"></i>Optimasi SEO Dasar</li>
-            <li><i class="fas fa-check"></i>Tombol WhatsApp</li>
-            <li><i class="fas fa-check"></i>Revisi 3x</li>
-            <li><i class="fas fa-check"></i>5-7 hari pengerjaan</li>
-          </ul>
-
-          <button class="btn-primary w-full justify-center" onclick="selectPackage('Standard')">
-            <i class="fas fa-shopping-cart"></i>
-            Pilih Standard
-          </button>
-        </div>
-
-        <!-- Premium Package -->
-        <div class="pricing-card fade-in">
-          <div class="text-center mb-6">
-            <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <i class="fas fa-crown text-2xl text-yellow-600"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-gray-800 mb-2">Premium</h3>
-            <p class="text-gray-600">Solusi lengkap untuk berkembang</p>
-          </div>
-
-          <div class="text-center mb-6">
-            <div class="text-4xl font-bold text-purple-600 mb-2">Rp 4.000.000</div>
-            <div class="text-sm text-gray-500">Dari <span class="line-through">Rp 5.000.000</span></div>
-          </div>
-
-          <ul class="feature-list mb-8">
-            <li><i class="fas fa-check"></i>Semua fitur Standard</li>
-            <li><i class="fas fa-check"></i>Galeri Foto</li>
-            <li><i class="fas fa-check"></i>Testimoni Pelanggan</li>
-            <li><i class="fas fa-check"></i>Desain Premium</li>
-            <li><i class="fas fa-check"></i>Revisi 5x</li>
-            <li><i class="fas fa-check"></i>7-10 hari pengerjaan</li>
-            <li><i class="fas fa-check"></i>Dukungan 3 bulan</li>
-          </ul>
-
-          <button class="btn-primary w-full justify-center" onclick="selectPackage('Premium')">
-            <i class="fas fa-shopping-cart"></i>
-            Pilih Premium
-          </button>
+        <!-- Note -->
+        <div
+          class="text-center mt-14 max-w-2xl mx-auto p-6 bg-white border border-purple-100 rounded-xl shadow-sm"
+        >
+          <p class="text-gray-700 leading-relaxed">
+            <strong>Catatan:</strong> Harga sudah termasuk domain (.com / .id)
+            dan
+            <span class="text-green-600 font-semibold"
+              >hosting gratis 1 tahun</span
+            >.
+          </p>
+          <p class="mt-2 text-sm text-gray-500 italic">
+            Setiap website yang dipesan adalah bagian nyata dari perjalanan
+            menuju akad — terima kasih atas dukungan dan doanya. 🤍
+          </p>
         </div>
       </div>
 
-      <!-- Note -->
-      <div class="text-center mt-12 max-w-2xl mx-auto p-6 bg-purple-50 rounded-xl">
-<p class="text-gray-700">
-  <strong>Catatan:</strong> Harga di atas sudah termasuk domain dan hosting <span class="text-green-600 font-semibold">gratis</span>.
-</p>
+      <style>
+        @keyframes pulse-slow {
+          0%,
+          100% {
+            opacity: 1;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.9;
+            transform: scale(1.02);
+          }
+        }
+        .animate-pulse-slow {
+          animation: pulse-slow 4s ease-in-out infinite;
+        }
+      </style>
+    </section>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- Simple Portfolio Section -->
-  <section id="portfolio" class="py-20 bg-white">
+    <!-- Simple Portfolio Section -->
+    <!-- <section id="portfolio" class="py-20 bg-white">
     <div class="container mx-auto px-4">
       <div class="text-center mb-16 fade-in">
         <h2 class="text-4xl font-bold text-gray-800 mb-4">Portfolio</h2>
@@ -637,7 +827,7 @@
 
       <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
         <!-- Project 1 -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden fade-in hover:shadow-xl transition-shadow">
+    <!-- <div class="bg-white rounded-xl shadow-lg overflow-hidden fade-in hover:shadow-xl transition-shadow">
           <div class="aspect-video overflow-hidden">
             <img src="assets/aftermeal.png" alt="Aftermeal" class="w-full h-full object-cover hover:scale-105 transition-transform" />
           </div>
@@ -649,10 +839,10 @@
               Lihat
             </a>
           </div>
-        </div>
+        </div> -->
 
-        <!-- Project 2 -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden fade-in hover:shadow-xl transition-shadow">
+    <!-- Project 2 -->
+    <!-- <div class="bg-white rounded-xl shadow-lg overflow-hidden fade-in hover:shadow-xl transition-shadow">
           <div class="aspect-video overflow-hidden">
             <img src="assets/apotek.png" alt="Apotek Firdaus" class="w-full h-full object-cover hover:scale-105 transition-transform" />
           </div>
@@ -664,16 +854,16 @@
               Lihat
             </a>
           </div>
-        </div>
+        </div> -->
 
-        <!-- Project 3 -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden fade-in hover:shadow-xl transition-shadow">
+    <!-- Project 3 -->
+    <!-- <div class="bg-white rounded-xl shadow-lg overflow-hidden fade-in hover:shadow-xl transition-shadow">
           <div class="aspect-video overflow-hidden">
             <img src="assets/toko-kue.png" alt="Toko Kue" class="w-full h-full object-cover hover:scale-105 transition-transform" />
           </div>
           <div class="p-6">
             <h3 class="text-xl font-bold text-gray-800 mb-2">Firdaus Cake</h3>
-            <p class="text-gray-600 mb-4">Website toko kue online premium</p>
+            <p class="text-gray-600 mb-4">Website E-commerce mini online premium</p>
             <a href="https://paket-ecommerce.netlify.app/" target="_blank" class="btn-secondary light">
               <i class="fas fa-external-link-alt"></i>
               Lihat
@@ -682,10 +872,10 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
-  <!-- Simple Contact Section -->
-  <section id="contact" class="py-20 bg-gray-50">
+    <!-- Simple Contact Section -->
+    <!-- <section id="contact" class="py-20 bg-gray-50">
     <div class="container mx-auto px-4">
       <div class="max-w-2xl mx-auto text-center">
         <div class="fade-in">
@@ -700,10 +890,10 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
-  <!-- Simple Footer -->
-  <footer class="bg-gray-800 text-white py-12">
+    <!-- Simple Footer -->
+    <!-- <footer class="bg-gray-800 text-white py-12">
     <div class="container mx-auto px-4 text-center">
       <div class="mb-6">
         <h3 class="text-2xl font-bold mb-4">
@@ -726,125 +916,157 @@
         <p class="text-gray-400">© 2025 Firdaus Web Developer. <br>All rights reserved.</p>
       </div>
     </div>
-  </footer>
-
+  </footer>   -->
 
     <!-- Floating WhatsApp Button -->
-    <a id="whatsappBtn"
-        href="https://wa.me/62895413263355?text=Halo,%20Firdaus,%20saya%20ingin%20pesan%20jasa%20website%20Anda."
-        target="_blank" rel="noopener noreferrer"
-        class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-xl transition transform hover:scale-110 animate-float z-50 
-                after:content-[''] after:absolute after:inset-0 after:rounded-full after:animate-ping-slow after:bg-green-400/30"
-        aria-label="Pesan via WhatsApp">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-7 h-7" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M20.52 3.48A11.88 11.88 0 0012 0C5.37 0 0 5.37 0 12c0 2.11.55 4.15 1.6 5.95L0 24l6.2-1.62A11.97 11.97 0 0012 24c6.63 0 12-5.37 12-12 0-3.19-1.24-6.2-3.48-8.52zM12 21.82c-1.93 0-3.82-.51-5.48-1.49l-.39-.23-3.69.96.99-3.6-.25-.41A9.82 9.82 0 012.18 12C2.18 6.6 6.6 2.18 12 2.18c2.62 0 5.08 1.02 6.93 2.87a9.79 9.79 0 012.89 6.95c0 5.4-4.42 9.82-9.82 9.82zm5.47-7.41c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.95 1.17-.17.2-.35.23-.65.08-.3-.15-1.26-.46-2.4-1.46-.89-.79-1.5-1.76-1.67-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.63-.93-2.22-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.53.08-.81.38s-1.06 1.03-1.06 2.5 1.08 2.9 1.23 3.1c.15.2 2.13 3.25 5.17 4.55.72.31 1.28.5 1.72.64.72.23 1.37.2 1.88.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.18-1.42-.08-.12-.28-.2-.58-.35z"/>
-        </svg>
+    <a
+      id="whatsappBtn"
+      href="https://wa.me/62895413263355?text=Halo,%20Firdaus,%20saya%20ingin%20pesan%20jasa%20website%20Anda."
+      target="_blank"
+      rel="noopener noreferrer"
+      class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-xl transition transform hover:scale-110 animate-float z-50 after:content-[''] after:absolute after:inset-0 after:rounded-full after:animate-ping-slow after:bg-green-400/30"
+      aria-label="Pesan via WhatsApp"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        class="w-7 h-7"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          d="M20.52 3.48A11.88 11.88 0 0012 0C5.37 0 0 5.37 0 12c0 2.11.55 4.15 1.6 5.95L0 24l6.2-1.62A11.97 11.97 0 0012 24c6.63 0 12-5.37 12-12 0-3.19-1.24-6.2-3.48-8.52zM12 21.82c-1.93 0-3.82-.51-5.48-1.49l-.39-.23-3.69.96.99-3.6-.25-.41A9.82 9.82 0 012.18 12C2.18 6.6 6.6 2.18 12 2.18c2.62 0 5.08 1.02 6.93 2.87a9.79 9.79 0 012.89 6.95c0 5.4-4.42 9.82-9.82 9.82zm5.47-7.41c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.95 1.17-.17.2-.35.23-.65.08-.3-.15-1.26-.46-2.4-1.46-.89-.79-1.5-1.76-1.67-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.63-.93-2.22-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.53.08-.81.38s-1.06 1.03-1.06 2.5 1.08 2.9 1.23 3.1c.15.2 2.13 3.25 5.17 4.55.72.31 1.28.5 1.72.64.72.23 1.37.2 1.88.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.18-1.42-.08-.12-.28-.2-.58-.35z"
+        />
+      </svg>
     </a>
 
     <!-- Back to Top Button -->
-        <button id="backToTop"
-            class="fixed bottom-7 right-24 w-14 h-14 flex items-center justify-center rounded-full bg-purple-600 hover:bg-purple-700 text-white font-bold text-3xl shadow-lg transition-all duration-500 opacity-0 z-50">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
-            </svg>
-        </button>
+    <button
+      id="backToTop"
+      class="fixed bottom-7 right-24 w-14 h-14 flex items-center justify-center rounded-full bg-purple-600 hover:bg-purple-700 text-white font-bold text-3xl shadow-lg transition-all duration-500 opacity-0 z-50"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-7 w-7"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="3"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M5 15l7-7 7 7"
+        />
+      </svg>
+    </button>
 
-  <script>
-    // Modern Preloader
-    window.addEventListener('load', function() {
-      setTimeout(function() {
-        document.getElementById('preloader').classList.add('hide');
-      }, 1500);
-    });
+    <script>
+      // Modern Preloader
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          document.getElementById("preloader").classList.add("hide");
+        }, 1500);
+      });
 
-    // Mobile Menu
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const closeMenuBtn = document.getElementById('close-menu');
+      // Mobile Menu
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const closeMenuBtn = document.getElementById("close-menu");
 
-    mobileMenuBtn?.addEventListener('click', () => {
-      mobileMenu.classList.add('active');
-    });
+      mobileMenuBtn?.addEventListener("click", () => {
+        mobileMenu.classList.add("active");
+      });
 
-    closeMenuBtn?.addEventListener('click', () => {
-      mobileMenu.classList.remove('active');
-    });
+      closeMenuBtn?.addEventListener("click", () => {
+        mobileMenu.classList.remove("active");
+      });
 
-    // Navbar on scroll
-    window.addEventListener('scroll', function() {
-      const navbar = document.getElementById('navbar');
-      const backToTop = document.getElementById('backToTop');
-      
-      if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-        backToTop.style.opacity = '1';
-      } else {
-        navbar.classList.remove('scrolled');
-        backToTop.style.opacity = '0';
+      // Navbar on scroll
+      window.addEventListener("scroll", function () {
+        const navbar = document.getElementById("navbar");
+        const backToTop = document.getElementById("backToTop");
+
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+          backToTop.style.opacity = "1";
+        } else {
+          navbar.classList.remove("scrolled");
+          backToTop.style.opacity = "0";
+        }
+      });
+
+      // Back to Top Function
+      const whatsappBtn = document.getElementById("whatsappBtn");
+      const backToTop = document.getElementById("backToTop");
+
+      window.addEventListener("scroll", () => {
+        const y = window.scrollY;
+        if (whatsappBtn) whatsappBtn.style.right = y > 500 ? "20px" : "24px";
+        if (backToTop) backToTop.style.opacity = y > 300 ? "1" : "0";
+      });
+
+      backToTop?.addEventListener("click", () =>
+        window.scrollTo({ top: 0, behavior: "smooth" })
+      );
+      // Add loading animation
+      window.addEventListener("load", function () {
+        document.body.style.opacity = "0";
+        document.body.style.transition = "opacity 0.5s ease-in-out";
+        setTimeout(() => {
+          document.body.style.opacity = "1";
+        }, 100);
+      });
+
+      // Smooth scrolling
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+            // Close mobile menu if open
+            mobileMenu.classList.remove("active");
+          }
+        });
+      });
+
+      // Package selection
+      function selectPackage(packageName) {
+        const message = `Halo! Saya tertarik dengan Paket ${packageName}. Bisa saya tahu detail lebih lanjut?`;
+        const whatsappUrl = `https://wa.me/62895413263355?text=${encodeURIComponent(
+          message
+        )}`;
+        window.open(whatsappUrl, "_blank");
       }
-    });
 
-        // Back to Top Function
-        const whatsappBtn = document.getElementById('whatsappBtn');
-        const backToTop = document.getElementById('backToTop');
+      // Fade in animation on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
 
-        window.addEventListener('scroll',()=>{
-            const y=window.scrollY;
-            if(whatsappBtn) whatsappBtn.style.right = y>500?'20px':'24px';
-            if(backToTop) backToTop.style.opacity = y>300?'1':'0';
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
         });
+      }, observerOptions);
 
-        backToTop?.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-        // Add loading animation
-        window.addEventListener('load', function() {
-            document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.5s ease-in-out';
-            setTimeout(() => {
-                document.body.style.opacity = '1';
-            }, 100);
-        });
-
-    // Smooth scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          // Close mobile menu if open
-          mobileMenu.classList.remove('active');
-        }
+      document.querySelectorAll(".fade-in").forEach((el) => {
+        observer.observe(el);
       });
-    });
 
-    // Package selection
-    function selectPackage(packageName) {
-      const message = `Halo! Saya tertarik dengan Paket ${packageName}. Bisa saya tahu detail lebih lanjut?`;
-      const whatsappUrl = `https://wa.me/62895413263355?text=${encodeURIComponent(message)}`;
-      window.open(whatsappUrl, '_blank');
-    }
-
-    // Fade in animation on scroll
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.fade-in').forEach(el => {
-      observer.observe(el);
-    });
-
-    // Console message
-    console.log('%c🚀 Firdaus Web Developer', 'color: #8b5cf6; font-size: 20px; font-weight: bold;');
-    console.log('%cWebsite profesional untuk UMKM Indonesia', 'color: #6366f1; font-size: 14px;');
-  </script>
-</body>
+      // Console message
+      console.log(
+        "%c🚀 Firdaus Web Developer",
+        "color: #8b5cf6; font-size: 20px; font-weight: bold;"
+      );
+      console.log(
+        "%cWebsite profesional untuk UMKM Indonesia",
+        "color: #6366f1; font-size: 14px;"
+      );
+    </script>
+  </body>
 </html>
