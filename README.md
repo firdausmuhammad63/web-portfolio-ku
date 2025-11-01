@@ -1,23 +1,30 @@
-# Web Portfolio Firdauss
+# 🌐 Web Firdaus Web Dev | Pribadi
 
 Ini adalah **web portfolio sederhana** yang dibuat menggunakan **HTML, Tailwind CSS, dan JavaScript**.  
-Web ini menampilkan informasi tentang jasa web development, contoh proyek, dan form pemesanan/ kontak yang terhubung dengan EmailJS.
+Website ini menampilkan informasi tentang **jasa web development**, **pricing**, 3 contoh web portfolio, serta **CTA akhir** untuk hubungi via WhatsApp.  
 
 ---
 
-## Fitur
-- Responsif dan modern dengan Tailwind CSS
-- Navigasi dengan **mobile menu** yang bisa dibuka/tutup
-- **Scroll animations** & fade-in effect
-- **Typing effect** untuk deskripsi profesi
-- **Skill bar** animasi
-- **Portfolio filter** untuk menampilkan kategori proyek
-- Form pemesanan / kontak dengan:
-  - Nama, Email, Telepon
-  - Pilihan Paket (Basic, Standard, Premium, Custom)
-  - Pesan yang dikirim menggunakan EmailJS
-  - Modal sukses setelah submit
-- **Back to Top button**
-- Smooth scrolling untuk semua link anchor
+## ✨ Fitur
+- 📱 **Responsif & Modern** menggunakan Tailwind CSS  
+- 🍔 **Navigasi Mobile Menu** yang bisa dibuka/tutup  
+- ✨ **Scroll Animations & Fade-in Effect**  
+- ⌨️ **Typing Effect** untuk deskripsi profesi  
+- 📊 **Skill Bar Animasi** untuk menampilkan kemampuan  
+- 🎨 **Portfolio Filter** untuk menampilkan kategori proyek  
+- 📩 **Form Pemesanan / Kontak** dengan:  
+  - 🧑 Nama, 📧 Email, 📞 Telepon  
+  - 📦 Pilihan Paket: Basic, Standard, Premium, Custom  
+  - ✉️ Pesan dikirim menggunakan **EmailJS**  
+  - ✅ Modal sukses muncul setelah submit  
+- ⬆️ **Back to Top Button**  
+- 🌊 **Smooth Scrolling** untuk semua link anchor  
 
-Allahumma Sahlun fii amriina...
+---
+
+💡 **Catatan Inspiratif:**  
+*Allahumma Sahlun fii amriina…* 🙏
+
+---
+
+Made with ❤️ using **HTML, Tailwind CSS, & Vanilla JavaScript**
